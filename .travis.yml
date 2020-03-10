@@ -1,0 +1,18 @@
+addons:
+  apt:
+    packages:
+    - docker-ce
+script:
+- cp .env.example .env
+- docker-compose up -d
+- docker-compose exec web python3 manage.py test apps
+- docker-compose down
+deploy:
+  provider: heroku
+  app: vibely-web
+  skip_cleanup: true
+  on:
+    repo: sergisi/web_project
+    branch: feature/docker
+  api_key:
+    secure: EBUcTL4joYPdOGgccNf4tv2uwZIc3V59htSlTBNA05pNGAMOa8WDVE43FC8dlHrXX7Qd5vV+Mj4hS2Q3Rb0ycx0bl+0oiCflG/JFyWeqJXq5KYQJrnWI1skDdvqKHc630LvWpPxby2doUmBfTfdiaQw7jQMDO1o7iSEG1XLeeDoNSyKbUSa0r3YyhSNIKrfOwqdNByQYLdxD6BNM3aeymrZLWd+x9rX7bWaGyBzzm8CWm35++qhKLFoi9JmYDfcWmONNxm9fIypIjrD2NdMn3Vje9/HmF0euHVAJ/K8i2jU8xV+V2P6cJyO+m6JiWRqeqZxS6OnWUT7K1qzEyjOF0J7ILVz3hgQp3mUIkkJfLxPu1tRWDtt0xTLp74ZEAbL3O1d6Je4gWVSIziBF5XyxzlK9Ta9pO0r6+ZK4IHZv8KudFBiiVHwIJgUBWbqdK7AYRSnh0eS8iqITbJIlLjDkyh8dqYKf6rhHNUuk55qH2YeYA7HZ4nIxOdC8zBalV0KX90+OM3De9Ry4t2Q1KIbHa73nm6nPj2s1N1304hGngO4vHgGRsPGWUYIsNpP7c4C1cS3niRRzbaLldGvucnNSTUmN2oYcv1JymzgCKG7+Ho1vf3C+dragbncpjlfbWM0GpYTf5UY3mlRtuen5sAToPzt4y+P0PMI7DstAZzjjLOc=
