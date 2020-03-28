@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 #event
 #establishment
 
+
 class Band(models.Model):
     web_link = models.URLField(max_length=255)
     playlist = models.URLField(max_length=300)
@@ -25,7 +26,7 @@ class Event(models.Model):
     ]
 
     name = models.CharField(max_length=300, null=True)
-    band = models.ManyToManyField('Band', related_name='events', blank=True, null=True)
+    band = models.ManyToManyField('Band', related_name='events', blank=True)
     state = models.CharField(max_length=2, choices=STATE, default="SR")
     date = models.DateTimeField(null=False)
     description = models.TextField()
