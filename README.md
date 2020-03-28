@@ -57,23 +57,28 @@ To stop it, use `docker-compose down`
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+To execute all tests, use `docker-compose exec web python3 manage.py test apps`
 
-### Break down into end to end tests
+### Test Structure
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
+Tests are in these format:
 
 ```
-Give an example
+apps
+  | ...
+  | tests
+    | __init__.py
+    | test_<something>.py
 ```
+
+So we ensure that all tests are discovered and tests are separated for diferent
+functionalities, as models, views or templates.
+
+
+### Test names
+
+All tests must be using a class derived from TestCase (or derived from it). Also,
+all methods that test must begin with test, so manage.py does properly discover them.
 
 ## Deployment
 
