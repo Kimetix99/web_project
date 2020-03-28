@@ -283,4 +283,3 @@ pip-selfcheck.json
 .env
 static/
 staticfiles/
-img/
