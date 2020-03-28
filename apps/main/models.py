@@ -40,7 +40,7 @@ class Establishment(models.Model):
     address = models.CharField(max_length=200)
     contacte_email = models.CharField(max_length=100)
     contacte_mobil = models.CharField(max_length=16)
-    image = models.ImageField(upload_to='img/', default='')
+    image = models.ImageField(upload_to='img/', default=None, blank=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=False, related_name='establishments')
 
     def __str__(self):
