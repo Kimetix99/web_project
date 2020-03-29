@@ -86,9 +86,23 @@ Master branch is deployed in CI/CD at [this site](https://vibely-udl.herokuapp.c
 
 ## Built With
 
-* [Django](https://www.djangoproject.com/) - The web framework used
+* [Django](https://www.djangoproject.com/) - The web framework used.
+* [Docker](https://www.docker.com/) - Container management.
+* [Heroku](https://www.heroku.com/) - Cloud Application Platform.
+* [PostgreSQL](https://www.postgresql.org/) - Open Source Database.
+* [Travis](https://travis-ci.org/) - Test CI.
+* [Crispy forms](https://django-crispy-forms.readthedocs.io/en/latest/) - For more crispy forms.
+* [Bootstrap 4](https://getbootstrap.com/) - A pretty css.
+
+## Authors
+
+* Pau Ibáñez Millán
+* Joan Martí Olivart
+* Ian Palacín Aliana
+* Joaquim Picó Mora
+* Sergi Simón Balcells
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GPLv3 License - see the [LICENSE](LICENSE) file for details
 
