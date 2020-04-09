@@ -1,21 +1,12 @@
+{% extends '_base.html' %}
 {% load crispy_forms_tags %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sign In</title>
-</head>
-<body>
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
 
+{% block title %}Sign In{% endblock title %}
+{% block content %}
     <h2>Sign Up</h2>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
         <button class="btn btn-success" type="submit">Log in</button>
     </form>
-</body>
-</html>
+{% endblock content %}

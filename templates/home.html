@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home Page Vibely</title>
-</head>
-<body>
+{% extends '_base.html' %}
+{% block title %} Home Page Vibely {% endblock title %}
+{% block content%}
     <h1>Homepage Vibely</h1>
     {% if user.is_authenticated %}
         Hi {{ user.username }}!
@@ -15,5 +11,4 @@
         <p>If you want to sign up:</p>
         <a href="{% url 'signup' %}">Sign up</a>
     {% endif %}
-</body>
-</html>
+{% endblock content %}
