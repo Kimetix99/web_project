@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'apps.users',
     'apps.main',
     'adminlte3',
+    'behave_django',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
