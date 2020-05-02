@@ -16,7 +16,7 @@ RUN apk add --no-cache --virtual .build-deps build-base linux-headers
 # Copy the requirements file into the image's filesystem at /app directory.
 RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
 RUN apk add firefox-esr
-RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-linux64.tar.gz && tar zxvf geckodriver-v0.23.0-linux64.tar.gz && mv geckodriver /bin/
+RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz && tar zxvf geckodriver-v0.26.0-linux64.tar.gz && mv geckodriver /bin/
 
 COPY requirements.txt /app/
 
