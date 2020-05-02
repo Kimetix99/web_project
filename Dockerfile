@@ -15,6 +15,7 @@ RUN apk add --no-cache jpeg-dev zlib-dev
 RUN apk add --no-cache --virtual .build-deps build-base linux-headers
 # Copy the requirements file into the image's filesystem at /app directory.
 RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
+RUN apk add firefox-esr
 
 COPY requirements.txt /app/
 
