@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'apps.users',
     'apps.main',
+    'adminlte3',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -63,7 +64,7 @@ ROOT_URLCONF = 'Vibely.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': ['Vibely/templates/']
         ,
         'APP_DIRS': True,
         'OPTIONS': {
