@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'apps.users',
     'apps.main',
-    'adminlte3',
     'behave_django',
 ]
 
