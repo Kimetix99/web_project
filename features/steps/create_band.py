@@ -12,10 +12,9 @@ def step_impl(context, user, password):
 @given(u'I\'m registrated as user')
 def step_impl(context):
     context.browser.visit(context.get_url('/accounts/login/?next=/band/create/)'))
-    form = context.browser.find_by_tag('form').first
     context.browser.fill('username', "user")
     context.browser.fill('password', "password")
-    form.find_by_id('id_submit').first.click()
+    context.browser.find_by_name('loginsubmit').first.click()
 
 @when(u'I try to establish as band with web_link "{web}" playlist "{playlist}" contacte_email "{mail}" contacte_mobil "{mobile}"')
 def step_impl(context, web, playlist, mail, mobile):
