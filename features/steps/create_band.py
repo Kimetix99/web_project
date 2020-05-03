@@ -18,17 +18,33 @@ def step_impl(context):
 
 @when(u'I try to establish as band with web_link "{web}" playlist "{playlist}" contacte_email "{mail}" contacte_mobil "{mobile}"')
 def step_impl(context, web, playlist, mail, mobile):
-    pass
+    context.browser.visit(
+            context.get_url('band_create')
+            )
+    assert context.browser.url == context.get_url('band_create')
+    context.browser.fill('web_link', web)
+    context.browser.fill('playlist', playlist)
+    context.browser.fill('contacte_email', mail)
+    context.browser.fill('contacte_mobil', mobile)
+    context.browser.find_by_name('bandsubmit').first.click()
 
 @then(u'I\'m viewing detail page of band with web_link "{web}" playlist "{playlist}" contacte_email "{mail}" contacte_mobil "{mobile}"')
 def step_impl(context, web, playlist, mail, mobile):
-    print(mail)
-    pass
+    from apps.main.models import Band
+    band = Band.objects.filter(
+            web_link=web,
+            playlist=playlist,
+            contacte_email=mail,
+            contacte_mobil=mobile).get()
+    assert context.browser.url == context.get_url(band)
 
 @when(u'I try to establish a band')
 def step_impl(context):
-    pass
+    context.browser.visit(context.get_url('band_create'))
+
 
 @then(u'I\'m viewing login page.')
 def step_impl(context):
-    pass
+    assert context.browser.url == context.get_url('/accounts/login/?next=/band/create')
+
+
