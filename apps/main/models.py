@@ -10,6 +10,7 @@ Models of the web app:
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # Create your models here.
 
@@ -19,12 +20,15 @@ class Band(models.Model):
     playlist = models.URLField(max_length=300)
     contacte_email = models.CharField(max_length=100)
     contacte_mobil = models.CharField(max_length=16)
-    image = models.ImageField(upload_to='img/', default='')
+    image = models.ImageField(upload_to='img/', blank=True)
     idUser = models.ForeignKey(User, on_delete=models.CASCADE, null=False, related_name='band')
     class Meta:
         permissions = [
                 ('band_owner', 'User is the owner of the band'),
                 ]
+
+    def get_absolute_url(self):
+        return reverse('band_detail', kwargs={'pk':self.pk})
 
 class Event(models.Model):
     STATE = [
@@ -33,7 +37,7 @@ class Event(models.Model):
         ("FN", "Finalized")
     ]
 
-    name = models.CharField(max_length=300, null=True)
+    name = models.CharField(max_length=300, blank=True)
     band = models.ManyToManyField('Band', related_name='events', blank=True)
     state = models.CharField(max_length=2, choices=STATE, default="SR")
     date = models.DateTimeField(null=False)
@@ -49,7 +53,7 @@ class Event(models.Model):
 
 
 class Establishment(models.Model):
-    name = models.CharField(max_length=300, null=True)
+    name = models.CharField(max_length=300, blank=True)
     address = models.CharField(max_length=200)
     contacte_email = models.CharField(max_length=100)
     contacte_mobil = models.CharField(max_length=16)
