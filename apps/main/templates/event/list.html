@@ -1,0 +1,24 @@
+{% extends '_base.html' %}
+
+{% block title %}Vibely - List Events{% endblock title %}
+{% block content %}
+  <div class="row">
+  {% for event in event_list %}
+    <div class="col-lg-6 col-sm-12 p-3 p-5-md">
+      <div class="card">
+          <div class="card-body">
+            <h5 class="card-title" name="list_name">{{ event.name }} - {{ event.get_state_display }}</h5>
+          <p class="card-text" name="list_date">{{ event.date|date }}</p>
+          <p class="card-text" name="list_description">{{ event.description }}</p>
+          <p class="card-text" name="list_est_name">{{ event.establishment.name }}</p>
+          {% comment %}<a href="{% url establishment_detail establishment.pk %}" class="btn btn-primary">View details</a>{% endcomment %}
+          <a href="#" class="btn btn-primary">View details</a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <h2 class="pt-3">Ups! Looks that there are no Establishments</h2>
+  {% endfor %}
+  </div>
+{% endblock content %}
+
