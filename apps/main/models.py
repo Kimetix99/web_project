@@ -31,6 +31,9 @@ class Band(models.Model):
     def get_absolute_url(self):
         return reverse('band_detail', kwargs={'pk':self.pk})
 
+    def __str__(self):
+        return f'Band(pk={self.pk}, playlist={self.playlist}, email={self.email}, mobile={self.mobile}, user={self.user.username})'
+
 class Event(models.Model):
     STATE = [
         ("SR", "Searching"),
@@ -50,7 +53,7 @@ class Event(models.Model):
                 ]  # Bands will contact privately to the owner, so it's not needed
 
     def __str__(self):
-        return self.name
+        return f'Event(pk={self.pk}, name={self.name}, state={self.state}, date={self.date}, establishment={self.establishment.name})'
 
 
 class Establishment(models.Model):
@@ -66,6 +69,6 @@ class Establishment(models.Model):
                 ('establishment_owner', 'User owner of the establishement')]
 
     def __str__(self):
-        return self.name
+        return f'Establishment(pk={self.pk}, name={self.name}, address={self.address}, user={self.user.username})'
 
 

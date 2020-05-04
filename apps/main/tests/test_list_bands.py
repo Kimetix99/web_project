@@ -19,7 +19,7 @@ class ListEstablishmentTest(TestCase):
         Band.objects.create(web_link='https://soundcloud.com/angelo-mikha', playlist='https://soundcloud.com/dj-elye/sets/jazz',  email="angelo@gmail.com", mobile="300000000", user=user4)
 
 
-    def test_establishment_list(self):
+    def test_bands_list(self):
         response = self.client.get(reverse('band_list'))
         self.assertEqual(response.status_code, 200)
 
@@ -27,5 +27,6 @@ class ListEstablishmentTest(TestCase):
         self.assertContains(response, "tessatioarina@gmail.com")
         self.assertContains(response, "angelo@gmail.com")
         self.assertContains(response, "tessatioarina@gmail.com")
-        self.assertTemplateUsed(response, 'band/list.html)')
+        self.assertTemplateUsed(response, 'band/list.html')
+        self.assertTemplateUsed(response, '_base.html')
 

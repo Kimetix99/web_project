@@ -45,3 +45,14 @@ class ListBand(ListView):
     model = Band
     template_name = 'band/list.html'
     context_object_name = 'band_list'
+
+
+class ListEvent(ListView):
+    model = Event
+    template_name = 'event/list.html'
+    context_object_name = 'event_list'
+
+    def get_queryset(self, *args, **kwargs):
+        return self.model.objects.all().order_by('-date')
+
+

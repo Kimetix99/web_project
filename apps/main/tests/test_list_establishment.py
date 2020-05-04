@@ -26,4 +26,5 @@ class ListEstablishmentTest(TestCase):
         self.assertContains(response, 'Bar Pac2')
         self.assertContains(response, 'Bar Pac3')
         self.assertContains(response, 'Bar Pac4')
-        self.assertTemplateUsed(response, 'establishment/list.html)')
+        self.assertTemplateUsed(response, 'establishment/list.html')
+        self.assertTemplateUsed(response, '_base.html')
