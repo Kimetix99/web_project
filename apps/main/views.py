@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Event, Establishment, Band
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 
@@ -35,4 +35,8 @@ class BandDetail(DetailView):
     model = Band
     template_name = 'band/detail.html'
 
+class ListEstablishment(ListView):
+    model = Establishment
+    template_name = 'establishment/list.html'
+    context_object_name = 'list_establishment'
 

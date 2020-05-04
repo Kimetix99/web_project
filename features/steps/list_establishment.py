@@ -21,7 +21,7 @@ def step_impl(context):
 
 @when(u'I list establishments')
 def step_impl(context):
-    context.browser.visit(context.get_url('band_list'))
+    context.browser.visit(context.get_url('establishment_list'))
 
 
 @then(u'I\'m viewing a list containing some of the establishments')
