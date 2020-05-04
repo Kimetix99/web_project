@@ -26,10 +26,12 @@ def step_impl(context):
 
 @then(u'I\'m viewing a list containing some of the establishments')
 def step_impl(context):
-    establishments = context.browser.find_by_tag('list_element')
+    from apps.main.models import Establishment
+    print(len(Establishment.objects.all()))
+    establishments = context.browser.find_by_name('list_element')
     for i, row in enumerate(context.table):
         assert row['name'] == establishments[i].text
 
-@then(u'The list contains 3 establishments')
-def step_impl(context):
-    assert count == len(context.browser.find_by_tag('list_element'))
+@then(u'The list contains {count:n} establishments')
+def step_impl(context, count):
+    assert count == len(context.browser.find_by_name('list_element'))
