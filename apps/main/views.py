@@ -40,3 +40,8 @@ class ListEstablishment(ListView):
     template_name = 'establishment/list.html'
     context_object_name = 'list_establishment'
 
+
+class ListBand(ListView):
+    model = Band
+    template_name = 'band/list.html'
+    context_object_name = 'band_list'

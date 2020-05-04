@@ -31,7 +31,15 @@ class Command(BaseCommand):
         """
         Creates all bands
         """
-        pass
+        self.bands = [
+        Band(web_link='https://soundcloud.com/skeewiff', playlist='https://soundcloud.com/dj-elye/sets/jazz', email="skeewiff@gmail.com", mobile="000000000", user=self.users[0]),
+        Band(web_link='https://soundcloud.com/tessatioarina', playlist='https://soundcloud.com/dj-elye/sets/jazz', email="tessatioarina@gmail.com", mobile="100000000", user=self.users[1]),
+        Band(web_link='https://soundcloud.com/drei-jazz', playlist='https://soundcloud.com/dj-elye/sets/jazz', email="tessatioarina@gmail.com", mobile="200000000", user=self.users[2]),
+        Band(web_link='https://soundcloud.com/angelo-mikha', playlist='https://soundcloud.com/dj-elye/sets/jazz', email="angelo@gmail.com", mobile="300000000", user=self.users[3]),
+        ]
+
+        for band in self.bands:
+            band.save()
 
     def _create_establishment(self):
         """
