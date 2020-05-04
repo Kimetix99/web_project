@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+
+{% block title %}Vibely - List establishments{% endblock title %}
+{% block content %}
+  <div class="row">
+  {% for establishment in list_establishment %}
+    <div class="col-lg-6 col-sm-12 p-3 p-5-md">
+      <div class="card">
+        {% if establishment.image %}
+        <img src="{{ establishment.image.url }}" class="card-img-top" alt="{{ establishment.name }}">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title" name="list_element">{{ establishment.name }}</h5>
+          <p class="card-text">{{establishment.address}}</p>
+          {% comment %}<a href="{% url establishment_detail establishment.pk %}" class="btn btn-primary">View details</a>{% endcomment %}
+          <a href="#" class="btn btn-primary">View details</a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <h2 class="pt-3">Ups! Looks that there are no Establishments</h2>
+  {% endfor %}
+  </div>
+{% endblock content %}
+
