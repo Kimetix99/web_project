@@ -6,6 +6,10 @@ import unittest
 from io import StringIO
 from django.core.management import call_command
 from django.test import TestCase
+from apps.main.models import Event, Band, Establishment
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class PopulatedbTest(TestCase):
 
@@ -22,7 +26,8 @@ class PopulatedbTest(TestCase):
         """
         Tests the command output with assertIn and assertNotIn
         """
-        self.assertIn("Text that should output when success", self.out)
-        self.assertNotIn("FAILURE", self.out)
-
+        self.assertEqual(len(User.objects.all()), 8)
+        self.assertEqual(len(Band.objects.all()), 4)
+        self.assertEqual(len(Establishment.objects.all()), 4)
+        self.assertEqual(len(Event.objects.all()), 4)
 
