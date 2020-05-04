@@ -19,11 +19,11 @@ def sign_up(request):
 class CreateBandView(LoginRequiredMixin, CreateView):
     model = Band
     fields = ['web_link', 'playlist', 
-            'contacte_email', 'contacte_mobil', 'image']
+            'email', 'mobile', 'image']
     template_name = 'band/create.html'
 
     def form_valid(self, form):
-        form.instance.idUser = self.request.user
+        form.instance.user = self.request.user
         return super(CreateBandView, self).form_valid(form)
 
     

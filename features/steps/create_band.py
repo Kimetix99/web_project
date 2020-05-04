@@ -24,8 +24,8 @@ def step_impl(context, web, playlist, mail, mobile):
     assert context.browser.url == context.get_url('band_create')
     context.browser.fill('web_link', web)
     context.browser.fill('playlist', playlist)
-    context.browser.fill('contacte_email', mail)
-    context.browser.fill('contacte_mobil', mobile)
+    context.browser.fill('email', mail)
+    context.browser.fill('mobile', mobile)
     context.browser.find_by_name('bandsubmit').first.click()
 
 @then(u'I\'m viewing detail page of band with web_link "{web}" playlist "{playlist}" contacte_email "{mail}" contacte_mobil "{mobile}"')
@@ -34,8 +34,8 @@ def step_impl(context, web, playlist, mail, mobile):
     band = Band.objects.filter(
             web_link=web,
             playlist=playlist,
-            contacte_email=mail,
-            contacte_mobil=mobile).get()
+            email=mail,
+            mobile=mobile).get()
     assert context.browser.url == context.get_url(band)
 
 @when(u'I try to establish a band')
