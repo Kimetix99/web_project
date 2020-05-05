@@ -6,15 +6,11 @@ Feature: Detail band
 
   Background: There are some bands.
     Given There are bands
-      | user        | password | web_link                             | playlist                                    | mail                 | mobile    |
-      | Tremola     | patata   | https://soundcloud.com/skeewiff      |  https://soundcloud.com/dj-elye/sets/jazz   | tremola@gmail.com    | 100000001 |
-      | Atope       | patata   | https://soundcloud.com/drei-jazz     |  https://soundcloud.com/dj-elye/sets/jazz   | atope@gmail.com      | 200000002 |
-      | Pecadets    | dracs    | https://soundcloud.com/tessatioarina |  https://soundcloud.com/dj-elye/sets/jazz   | pecadets@gmail.com   | 300000003 |
-
+      | user        | password | name       | web_link                             | playlist                                    | mail                 | mobile    |
+      | Tremola     | patata   | itaca band | https://soundcloud.com/skeewiff      |  https://soundcloud.com/dj-elye/sets/jazz   | tremola@gmail.com    | 100000001 |
+      | Atope       | patata   | els manel  | https://soundcloud.com/drei-jazz     |  https://soundcloud.com/dj-elye/sets/jazz   | atope@gmail.com      | 200000002 |
+      | Pecadets    | dracs    | metallica  | https://soundcloud.com/tessatioarina |  https://soundcloud.com/dj-elye/sets/jazz   | pecadets@gmail.com   | 30000000  |
   Scenario: Show band information
     When I show all of the band information. 
-      | web_link                             | playlist                                    | mail                 | mobile    |
-      | https://soundcloud.com/skeewiff      |  https://soundcloud.com/dj-elye/sets/jazz   | tremola@gmail.com    | 100000001 |
-      | https://soundcloud.com/drei-jazz     |  https://soundcloud.com/dj-elye/sets/jazz   | atope@gmail.com      | 200000002 |
-      | https://soundcloud.com/tessatioarina |  https://soundcloud.com/dj-elye/sets/jazz   | pecadets@gmail.com   | 300000003 |
-    And The list contains 3 bands
+      | name        | web_link                             | playlist                                    | mail                 | mobile    |
+      |  itaca band | https://soundcloud.com/skeewiff      |  https://soundcloud.com/dj-elye/sets/jazz   | tremola@gmail.com    | 100000001 |

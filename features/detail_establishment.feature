@@ -15,6 +15,4 @@ Feature: Detail establishment
     Then I'm viewing the establishment profile with all the information of the establishment. 
       | name     | address     | mail                 | mobile    |
       | Tremola  | C.Major n 9 | tremola@gmail.com    | 100000001 |
-      | Atope    | C.Majo n 10 | atope@gmail.com      | 200000002 |
-      | Pecadets | C.Majo n 11 | pecadets@gmail.com   | 300000003 |
-    And The list contains 3 establishments
+    And The list contains 1 establishments

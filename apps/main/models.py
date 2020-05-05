@@ -16,6 +16,7 @@ from django.urls import reverse
 
 
 class Band(models.Model):
+    name = models.CharField('Name of the band', max_length=255)
     web_link = models.URLField('Web Link to Portfolio', max_length=255)
     playlist = models.URLField('SoundCloud Playlist', max_length=300)
     email = models.CharField('A contact email', max_length=100)

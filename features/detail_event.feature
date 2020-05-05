@@ -27,6 +27,4 @@ Feature: Detail event
     Then I'm viewing of the event information.
       |  name            |  band                 |  state  |  date  |  description  |  establishment  |
       |  Acampada Jove   |  skeewiff@gmail.com   |  CL     |  1     |  Large descr  |  Pecadets       |
-      |  Festiuet        |  drei-jazz@gmail.com  |  FN     |  -1    |  Medium desc  |  Atope          |
-      |  PrimaveraSound  |  tessatio@gmail.com   |  SR     |  4     |  Short descr  |  Tremola        |
-    And The list contains 3 events
+    And The list contains 1 events
