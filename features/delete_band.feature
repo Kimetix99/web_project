@@ -11,14 +11,14 @@ Feature: Delete a band
       | Pecadets    | dracs    | https://soundcloud.com/tessatioarina |  https://soundcloud.com/dj-elye/sets/jazz   | pecadets@gmail.com   | 300000003 |
 
 
-    Scenario:
-      Given I'm registrated as user "Tremola" with password "patata"
-      When I try deleting the band with email "tremola@gmail.com"
-      Then There is no band with the email "tremola@gmail.com"
-      And I'm viewing home
+  Scenario:
+    Given I'm registrated as user "Tremola" with password "patata"
+    When I try deleting the band with email "tremola@gmail.com"
+    Then There is no band with the email "tremola@gmail.com"
+    And I'm viewing deletion successful page
 
-    Scenario:
-      Given I'm registrated as user "Tremola" with password "patata"
-      When I try deleting the band with email "pecadets@gmail.com"
-      Then There is a band with email "pecadets@gmail.com"
-      And I'm viewing home
+  Scenario:
+    Given I'm registrated as user "Tremola" with password "patata"
+    When I try deleting the band with email "pecadets@gmail.com"
+    Then There is a band with email "pecadets@gmail.com"
+    And I'm viewing deletion unsuccessful page
