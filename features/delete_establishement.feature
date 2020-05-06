@@ -11,17 +11,13 @@ Feature: Delete a Establishement
       | Pecadets    | dracs    | Pecadets | C.Majo n 11 | pecadets@gmail.com   | 300000003 |
 
     Scenario: 
-      Given Exists user "user" with password "password"
-      And I am the owner of the establishment "Atope"
-      When I try deleting the establishment "Tremola"
-      Then
-
-
-
+      Given I'm registrated as user "Tremola" with password "patata"
+      When I try deleting the establishment with email "tremola@gmail.com"
+      Then There is no establishment with the email "tremola@gmail.com"
+      And I'm viewing deletion successful page
 
     Scenario:
-      Given Exists user "user" with password "password"
-      And I am the owner of the band "Tremola"
-      When I try deleting the band "Tremola"
-      Then There is no band with the name of the deleted band
-      And I'm viewing home
+      Given I'm registrated as user "Tremola" with password "patata"
+      When I try deleting the establishment with email "pecadets@gmail.com"
+      Then There is am establishment with the email "pecadets@gmail.com"
+      And I'm viewing deletion unsuccessful page
