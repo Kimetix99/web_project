@@ -15,7 +15,7 @@ def step_impl(context):
     web_link = context.browser.find_by_name('web_link')
     playlist = context.browser.find_by_name('playlist')
     email = context.browser.find_by_name('email')
-    mobil = context.browser.find_by_name('mobile')
+    mobile = context.browser.find_by_name('mobile')
     for i, row in enumerate(context.table):
         assert row['name'] == name[i].text
         assert row['web_link'] == web_link[i].text
