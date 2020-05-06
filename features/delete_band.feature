@@ -12,8 +12,7 @@ Feature: Delete a band
 
 
     Scenario:
-      Given Exists user "user" with password "password"
-      And I am the owner of the band "Tremola"
-      When I try deleting the band "Tremola"
-      Then There is no band with the name of the deleted band
+      Given I'm registrated as user "Tremola" with password "patata"
+      When I try deleting the band with email "tremola@gmail.com"
+      Then There is no band with the email "tremola@gmail.com"
       And I'm viewing home
