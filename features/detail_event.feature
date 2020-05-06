@@ -23,8 +23,8 @@ Feature: Detail event
 
 
   Scenario: Show event information
-    When I show event information
-    Then I'm viewing of the event information.
+    When I visit the event with name "Acampada Jove"
+    Then I view all of the event information. 
       |  name            |  band                 |  state  |  date  |  description  |  establishment  |
       |  Acampada Jove   |  skeewiff@gmail.com   |  CL     |  1     |  Large descr  |  Pecadets       |
     And The list contains 1 events

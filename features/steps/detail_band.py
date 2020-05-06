@@ -1,37 +1,25 @@
 from behave import *
 use_step_matcher("parse")
 
-@given(u'There are bands')
-def step_impl(context):
+
+@when(u'I visit the band with name "{band_name}"')
+def step_impl(context, band_name):
     from apps.main.models import Band
-    from django.contrib.auth import get_user_model
-    User = get_user_model()
-    for row in context.table:
-        user = User.objects.create_user(
-                username=row['user'], password=row['password']
-                )
-        Band(
-                web_link=row['web_link'],
-                playlist=row['playlist'],
-                email=row['mail'],
-                mobile=row['mobile'],
-                user=user
-                ).save()
+    band = Band.objects.get(name = band_name)
+    context.browser.visit(context.get_url(band))
 
 
-@when(u'Show band information')
+@then(u'I view all of the band information.')
 def step_impl(context):
-    context.browser.visit(context.get_url('band_detail'))
-
-
-@then(u'I show all of the band information.')
-def step_impl(context):
+    name = context.browser.find_by_name('name')
     web_link = context.browser.find_by_name('web_link')
     playlist = context.browser.find_by_name('playlist')
-    contacte_email = context.browser.find_by_name('contacte_email')
-    contacte_mobil = context.browser.find_by_name('contacte_mobil')
-    assert row['web_link'] == web_link.text
-    assert row['playlist'] == playlist.text
-    assert row['contacte_email'] == contacte_email.text
-    assert row['contacte_mobil'] == contacte_mobil.text
+    email = context.browser.find_by_name('email')
+    mobil = context.browser.find_by_name('mobile')
+    for i, row in enumerate(context.table):
+        assert row['name'] == name[i].text
+        assert row['web_link'] == web_link[i].text
+        assert row['playlist'] == playlist[i].text
+        assert row['mail'] == email[i].text
+        assert row['mobile'] == mobile[i].text
 

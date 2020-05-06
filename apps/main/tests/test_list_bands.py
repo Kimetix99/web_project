@@ -14,7 +14,7 @@ class ListBandTest(TestCase):
         user3 = User.objects.create_user(username="paquito2", password="testingpaco123", email="paco@gmail.om", first_name="Paco", last_name="Rodriguez")
         user4 = User.objects.create_user(username="paquito3", password="testingpaco123", email="paco@gmail.cm", first_name="Paco", last_name="Rodriguez")
         Band.objects.create(name="itacaband", web_link='https://soundcloud.com/skeewiff', playlist='https://soundcloud.com/dj-elye/sets/jazz',      email="skeewiff@gmail.com", mobile="000000000", user=user1)
-        Band.objects.create(name="metallica",web_link='https://soundcloud.com/tessatioarina', playlist='https://soundcloud.com/dj-elye/sets/jazz', email="tessatioarina@gmail.com", mobile="100000000", user=user2)
+        Band.objects.create(name="metallica", web_link='https://soundcloud.com/tessatioarina', playlist='https://soundcloud.com/dj-elye/sets/jazz', email="tessatioarina@gmail.com", mobile="100000000", user=user2)
         Band.objects.create(name="Maravillosa Orquesta del Alchol", web_link='https://soundcloud.com/drei-jazz', playlist='https://soundcloud.com/dj-elye/sets/jazz',     email="tessatioarina@gmail.com", mobile="200000000", user=user3)
         Band.objects.create(name="Oques Grasses", web_link='https://soundcloud.com/angelo-mikha', playlist='https://soundcloud.com/dj-elye/sets/jazz',  email="angelo@gmail.com", mobile="300000000", user=user4)
 

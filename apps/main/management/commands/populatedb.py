@@ -32,10 +32,10 @@ class Command(BaseCommand):
         """
         Creates all bands
         """
-        band1 = Band.objects.create(web_link='https://soundcloud.com/skeewiff', playlist='https://soundcloud.com/dj-elye/sets/jazz',      email="skeewiff@gmail.com", mobile="000000000", user=self.users[0])
-        band2 = Band.objects.create(web_link='https://soundcloud.com/tessatioarina', playlist='https://soundcloud.com/dj-elye/sets/jazz', email="tessatioarina@gmail.com", mobile="100000000", user=self.users[1])
-        band3 = Band.objects.create(web_link='https://soundcloud.com/drei-jazz', playlist='https://soundcloud.com/dj-elye/sets/jazz',     email="tessatioarina@gmail.com", mobile="200000000", user=self.users[2])
-        band4 = Band.objects.create(web_link='https://soundcloud.com/angelo-mikha', playlist='https://soundcloud.com/dj-elye/sets/jazz',  email="angelo@gmail.com", mobile="300000000", user=self.users[3])
+        band1 = Band.objects.create(name="itacaband", web_link='https://soundcloud.com/skeewiff', playlist='https://soundcloud.com/dj-elye/sets/jazz',      email="skeewiff@gmail.com", mobile="000000000", user=self.users[0])
+        band2 = Band.objects.create(name="metallica", web_link='https://soundcloud.com/tessatioarina', playlist='https://soundcloud.com/dj-elye/sets/jazz', email="tessatioarina@gmail.com", mobile="100000000", user=self.users[1])
+        band3 = Band.objects.create(name="Maravillosa Orquesta del Alchol", web_link='https://soundcloud.com/drei-jazz', playlist='https://soundcloud.com/dj-elye/sets/jazz',     email="tessatioarina@gmail.com", mobile="200000000", user=self.users[2])
+        band4 = Band.objects.create(name="Oques Grasses", web_link='https://soundcloud.com/angelo-mikha', playlist='https://soundcloud.com/dj-elye/sets/jazz',  email="angelo@gmail.com", mobile="300000000", user=self.users[3])
         self.bands = [band1, band2, band3, band4]
 
 

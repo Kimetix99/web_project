@@ -56,6 +56,8 @@ class Event(models.Model):
     def __str__(self):
         return f'Event(pk={self.pk}, name={self.name}, state={self.state}, date={self.date}, establishment={self.establishment.name})'
 
+    def get_absolute_url(self):
+        return reverse('event_detail', kwargs={'pk':self.pk})
 
 class Establishment(models.Model):
     name = models.CharField('Establishment name', max_length=300, blank=True)
@@ -72,4 +74,5 @@ class Establishment(models.Model):
     def __str__(self):
         return f'Establishment(pk={self.pk}, name={self.name}, address={self.address}, user={self.user.username})'
 
-
+    def get_absolute_url(self):
+        return reverse('establishment_detail', kwargs={'pk':self.pk})
