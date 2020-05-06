@@ -10,6 +10,10 @@ urlpatterns = [
         name='band_detail'),
     path('establishment/', views.ListEstablishment.as_view(),
         name='establishment_list'),
+    path('establishment/<int:pk>', views.EstablishmentDetail.as_view(),
+        name='establishment_detail'),
     path('event/', views.ListEvent.as_view(),
         name='event_list'),
+    path('event/<int:pk>', views.EventDetail.as_view(),
+        name='event_detail'),
 ]
