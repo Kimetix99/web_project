@@ -16,3 +16,9 @@ Feature: Delete a band
       When I try deleting the band with email "tremola@gmail.com"
       Then There is no band with the email "tremola@gmail.com"
       And I'm viewing home
+
+    Scenario:
+      Given I'm registrated as user "Tremola" with password "patata"
+      When I try deleting the band with email "pecadets@gmail.com"
+      Then There is a band with email "pecadets@gmail.com"
+      And I'm viewing home
