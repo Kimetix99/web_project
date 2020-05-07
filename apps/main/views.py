@@ -35,6 +35,14 @@ class BandDetail(DetailView):
     model = Band
     template_name = 'band/detail.html'
 
+class EstablishmentDetail(DetailView):
+    model = Establishment
+    template_name = 'establishment/detail.html'
+
+class EventDetail(DetailView):
+    model = Event
+    template_name = 'event/detail.html'
+
 class ListEstablishment(ListView):
     model = Establishment
     template_name = 'establishment/list.html'
