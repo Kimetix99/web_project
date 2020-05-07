@@ -67,13 +67,11 @@ class DeleteBand( UserPassesTestMixin, DeleteView):
 class DeleteEstablishment(UserPassesTestMixin, DeleteView):
     model = Establishment
     success_url = reverse_lazy('home')
-    template_name = 'establishment/establishment_confirm_delete.html'
+    template_name = 'establishment/confirm_delete.html'
     def test_func(self):
         establishment = Establishment.objects.filter(pk=self.kwargs['pk']).first()
-        if establishment != None and \
-                self.request.user.pk == establishment.user.pk:
-            return True
-
+        return establishment != None and \
+                self.request.user.pk == establishment.user.pk
 
 
 
