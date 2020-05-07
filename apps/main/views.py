@@ -58,10 +58,12 @@ class ListEvent(ListView):
 class DeleteBand( UserPassesTestMixin, DeleteView):
     model = Band
     success_url = reverse_lazy('home')
+    template_name = 'band/band_confirm_delete.html'
 
 
     def test_func(self):
-        if self.request.user.id == int(self.kwargs['pk']):
+        band = Band.objects.filter(pk=self.kwargs['pk']).first()
+        if band != None and self.request.user.pk == band.user.pk:
             return True
 
 
