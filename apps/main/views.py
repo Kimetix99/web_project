@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from .models import Event, Establishment, Band
-from django.views.generic import CreateView, DetailView, ListView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
+from django.views.generic import CreateView, DetailView, ListView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
+from django.urls import reverse, reverse_lazy
 
 def home(request):
     return render(request, 'home.html', {})
@@ -62,5 +62,15 @@ class ListEvent(ListView):
 
     def get_queryset(self, *args, **kwargs):
         return self.model.objects.all().order_by('-date')
+
+class DeleteBand( UserPassesTestMixin, DeleteView):
+    model = Band
+    success_url = reverse_lazy('home')
+
+
+    def test_func(self):
+        if self.request.user.id == int(self.kwargs['pk']):
+            return True
+
 
 
