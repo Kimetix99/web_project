@@ -11,10 +11,10 @@ Feature: Detail event
       | Atope       | patata   | Atope    | C.Majo n 10 | atope@gmail.com      | 200000002 |
       | Pecadets    | dracs    | Pecadets | C.Majo n 11 | pecadets@gmail.com   | 300000003 |
     And There are bands
-      | user          | password | web_link                             | playlist                                    | mail                 | mobile    | name          |
-      | Skeewiff      | patata   | https://soundcloud.com/skeewiff      |  https://soundcloud.com/dj-elye/sets/jazz   | skeewiff@gmail.com   | 100000001 | Skeewiff      |
-      | Drei-jazz     | patata   | https://soundcloud.com/drei-jazz     |  https://soundcloud.com/dj-elye/sets/jazz   | drei-jazz@gmail.com  | 200000002 | Drei-jazz     |
-      | Tessatiorina  | dracs    | https://soundcloud.com/tessatioarina |  https://soundcloud.com/dj-elye/sets/jazz   | tessatio@gmail.com   | 300000003 | Tessatiorina  |
+      | user          | password | web_link                             | playlist                                                        | mail                 | mobile    | name          |
+      | Skeewiff      | patata   | https://soundcloud.com/skeewiff      |  https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0   | skeewiff@gmail.com   | 100000001 | Skeewiff      |
+      | Drei-jazz     | patata   | https://soundcloud.com/drei-jazz     |  https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0   | drei-jazz@gmail.com  | 200000002 | Drei-jazz     |
+      | Tessatiorina  | dracs    | https://soundcloud.com/tessatioarina |  https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0   | tessatio@gmail.com   | 300000003 | Tessatiorina  |
     And There are events
       |  name            |  band                 |  state  |  date  |  description  |  establishment  |
       |  Acampada Jove   |  skeewiff@gmail.com   |  CL     |  1     |  Large descr  |  Pecadets       |

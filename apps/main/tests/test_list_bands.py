@@ -20,6 +20,7 @@ class ListBandTest(TestCase):
 
 
     def test_bands_list(self):
+        print(reverse('band_list'))
         response = self.client.get(reverse('band_list'))
         self.assertEqual(response.status_code, 200)
 
