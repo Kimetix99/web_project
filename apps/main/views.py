@@ -63,6 +63,18 @@ class ListEvent(ListView):
     def get_queryset(self, *args, **kwargs):
         return self.model.objects.all().order_by('-date')
 
+class DeleteEvent(UserPassesTestMixin, DeleteView):
+    model = Event
+    success_url = reverse_lazy('home')
+    template_name = 'event/confirm_delete.html'
+
+    
+    def test_func(self):
+        event = Event.objects.filter(pk=self.kwargs['pk']).first()
+        return event != None and\
+                self.request.user.pk == event.establishment.user.pk
+
+      
 class DeleteBand( UserPassesTestMixin, DeleteView):
     model = Band
     success_url = reverse_lazy('home')
@@ -71,6 +83,4 @@ class DeleteBand( UserPassesTestMixin, DeleteView):
     def test_func(self):
         if self.request.user.id == int(self.kwargs['pk']):
             return True
-
-
 
