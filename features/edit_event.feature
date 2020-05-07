@@ -13,16 +13,16 @@ Feature: Edit an event
     And There are events
       |  name            |  band                 |  state  |  date  |  description  |  establishment  |
       |  Acampada Jove   |  skeewiff@gmail.com   |  SR     |  1     |  Large descr  |  Tremola        |
+    And Exists user "user2" with password "password"
 
   Scenario: Edit owned event
     Given I'm registrated as user "Tremola" with password "patata"
     When I visit the event with name "Acampada Jove"
-    And I edit the current event
-      | state   |
-      | CL      |
-    Then I'm viewing the details page for event at establishment "Bar The Bar" by "user1"
-      |  name            |  band                 |  state  | description  |
-      |  Acampada Jove   |  skeewiff@gmail.com   |  CL     | Large descr  |
+    And I click button named "edit"
+    And I fill camp "{state}" with value "{closed}"
+    Then I view all of the event information. 
+      |  name                    |  band                 |  state  |  date  |  description  |  establishment  |
+      |  Event : Acampada Jove   |  skeewiff@gmail.com   |  CL     |  1     |  Large descr  |  Pecadets       |
     And There are 1 events
 
   Scenario: Try to edit event but not logged in

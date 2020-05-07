@@ -10,17 +10,14 @@ Feature: Edit a Establishement
      | user1       | password | Tremola  | C.Major n 9 | tremola@gmail.com    | 100000001 |
 
 
-
-
-
   Scenario: Edit owned establishment registry email
     Given I'm registrated as user "user1" with password "password"
-    When I edit the establishment with name "Tremola"
-      | email     |
-      | b@b.com   |
-    Then I'm viewing the details page for establishment
-      | name            | address         | email     | mobile      | image             |
-      | Bar The Bar     | Carrer Major, 2 | b@b.com   | 123456789   | features/img.png  |
+    When I visit the establishment with name "Tremola"
+    And I click button named "edit"
+    And I fill camp "{email}" with value "{b@b.com}"
+    Then I view all of the establishment information. 
+      | name                     | address     | mail     | mobile    | user   |
+      | Establishment : Tremola  | C.Major n 9 | b@b.com  | 100000001 | user1  |
     And There are 1 establishments
 
   Scenario: Try to edit establishment but not logged in
@@ -34,11 +31,6 @@ Feature: Edit a Establishement
 
   Scenario: Force edit establishment but not the owner permission exception
     Given I'm registrated as user "user2" with password "password"
-    When I edit the establishment with name "Tremola"
-      | email     |
-      | b@b.com   |
+    When I try to visit edit page of establishment "Tremola"
     Then Server responds with page containing 403
-    When I visit the establishment with name "Tremola"
-    Then I'm viewing the details page for establishment
-      | name     | address     | mail                 | mobile    |
-      | Tremola  | C.Major n 9 | tremola@gmail.com    | 100000001 |
+

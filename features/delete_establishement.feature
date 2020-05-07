@@ -14,7 +14,7 @@ Feature: Delete a Establishement
       Given Exists user "user" with password "password"
       And I am the owner of the establishment "Atope"
       When I try deleting the establishment "Tremola"
-      Then
+      Then El Sergi és idiota i no sap fer cherrypicks :(
 
 
 
