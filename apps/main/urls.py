@@ -12,4 +12,6 @@ urlpatterns = [
         name='establishment_list'),
     path('event/', views.ListEvent.as_view(),
         name='event_list'),
+    path('band/delete/<int:pk>', views.DeleteBand.as_view(),
+        name='band_delete'),
 ]
