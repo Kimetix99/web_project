@@ -19,7 +19,6 @@ def step_impl(context):
     for i, row in enumerate(context.table):
         assert row['name'] == name[i].text
         assert row['web_link'] == web_link[i].text
-        assert row['playlist'] == playlist[i].text
         assert row['mail'] == email[i].text
         assert row['mobile'] == mobile[i].text
 
