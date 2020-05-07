@@ -35,6 +35,14 @@ class BandDetail(DetailView):
     model = Band
     template_name = 'band/detail.html'
 
+class EstablishmentDetail(DetailView):
+    model = Establishment
+    template_name = 'establishment/detail.html'
+
+class EventDetail(DetailView):
+    model = Event
+    template_name = 'event/detail.html'
+
 class ListEstablishment(ListView):
     model = Establishment
     template_name = 'establishment/list.html'
@@ -60,7 +68,19 @@ class DeleteEvent(UserPassesTestMixin, DeleteView):
     success_url = reverse_lazy('home')
     template_name = 'event/confirm_delete.html'
 
+    
     def test_func(self):
         event = Event.objects.filter(pk=self.kwargs['pk']).first()
         return event != None and\
                 self.request.user.pk == event.establishment.user.pk
+
+      
+class DeleteBand( UserPassesTestMixin, DeleteView):
+    model = Band
+    success_url = reverse_lazy('home')
+
+
+    def test_func(self):
+        if self.request.user.id == int(self.kwargs['pk']):
+            return True
+
