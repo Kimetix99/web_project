@@ -58,11 +58,9 @@ class ListEvent(ListView):
 class DeleteEvent(UserPassesTestMixin, DeleteView):
     model = Event
     success_url = reverse_lazy('home')
-    template_name = 'event/event_confirm_delete.html'
+    template_name = 'event/confirm_delete.html'
 
     def test_func(self):
         event = Event.objects.filter(pk=self.kwargs['pk']).first()
-        if event != None and\
-                self.request.user.pk == event.establishment.user.pk:
-            return True
-
+        return event != None and\
+                self.request.user.pk == event.establishment.user.pk
