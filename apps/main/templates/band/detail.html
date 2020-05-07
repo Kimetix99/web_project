@@ -6,8 +6,10 @@
     </div>
     <div class="col-xs-6">
       <h2>Band : {{ object.name }}</h2>
-      <iframe src="https://open.spotify.com/follow/1/?uri={{object.web_link}}&size=detail&theme=light" width="300" height="56" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowtransparency="true"></iframe>
-      <iframe src="{{object.playlist}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      <div class="col-xs-12">
+        <iframe src="{{object.playlist}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      </div>
+      <a href="http://oquesgrasses.com/">http://oquesgrasses.com/</a>
       <p name="email">{{object.email}}</p> 
       <p name="mobile">{{object.mobile}}</p>
       </p>

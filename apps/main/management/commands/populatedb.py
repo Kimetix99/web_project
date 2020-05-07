@@ -32,10 +32,10 @@ class Command(BaseCommand):
         """
         Creates all bands
         """
-        band1 = Band.objects.create(name="itacaband", web_link='spotify:artist:5qPeAT4ikl6gJNUexAOEy0', playlist='https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0',      email="skeewiff@gmail.com", mobile="000000000", user=self.users[0])
-        band2 = Band.objects.create(name="metallica", web_link='spotify:artist:5qPeAT4ikl6gJNUexAOEy0', playlist='https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0', email="tessatioarina@gmail.com", mobile="100000000", user=self.users[1])
-        band3 = Band.objects.create(name="Maravillosa Orquesta del Alchol", web_link='spotify:artist:5qPeAT4ikl6gJNUexAOEy0', playlist='https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0',     email="tessatioarina@gmail.com", mobile="200000000", user=self.users[2])
-        band4 = Band.objects.create(name="Oques Grasses", web_link='spotify:artist:5qPeAT4ikl6gJNUexAOEy0', playlist='https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0',  email="angelo@gmail.com", mobile="300000000", user=self.users[3])
+        band1 = Band.objects.create(name="itacaband", web_link='http://oquesgrasses.com/es/', playlist='https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0',      email="skeewiff@gmail.com", mobile="000000000", user=self.users[0])
+        band2 = Band.objects.create(name="metallica", web_link='http://oquesgrasses.com/es/', playlist='https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0', email="tessatioarina@gmail.com", mobile="100000000", user=self.users[1])
+        band3 = Band.objects.create(name="Maravillosa Orquesta del Alchol", web_link='http://oquesgrasses.com/es/', playlist='https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0',     email="tessatioarina@gmail.com", mobile="200000000", user=self.users[2])
+        band4 = Band.objects.create(name="Oques Grasses", web_link='http://oquesgrasses.com/es/', playlist='https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0',  email="angelo@gmail.com", mobile="300000000", user=self.users[3])
         self.bands = [band1, band2, band3, band4]
 
 
