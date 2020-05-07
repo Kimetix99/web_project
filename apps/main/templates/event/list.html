@@ -11,8 +11,8 @@
           <p class="card-text" name="list_date">{{ event.date|date }}</p>
           <p class="card-text" name="list_description">{{ event.description }}</p>
           <p class="card-text" name="list_est_name">{{ event.establishment.name }}</p>
-          {% comment %}<a href="{% url establishment_detail establishment.pk %}" class="btn btn-primary">View details</a>{% endcomment %}
-          <a href="#" class="btn btn-primary">View details</a>
+          <a href="{% url establishment_detail establishment.pk %}" class="btn btn-primary">View details</a>
+          <!--<a href="#" class="btn btn-primary">View details</a>-->
         </div>
       </div>
     </div>

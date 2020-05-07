@@ -35,6 +35,14 @@ class BandDetail(DetailView):
     model = Band
     template_name = 'band/detail.html'
 
+class EstablishmentDetail(DetailView):
+    model = Establishment
+    template_name = 'establishment/detail.html'
+
+class EventDetail(DetailView):
+    model = Event
+    template_name = 'event/detail.html'
+
 class ListEstablishment(ListView):
     model = Establishment
     template_name = 'establishment/list.html'
@@ -55,6 +63,18 @@ class ListEvent(ListView):
     def get_queryset(self, *args, **kwargs):
         return self.model.objects.all().order_by('-date')
 
+class DeleteEvent(UserPassesTestMixin, DeleteView):
+    model = Event
+    success_url = reverse_lazy('home')
+    template_name = 'event/confirm_delete.html'
+
+    
+    def test_func(self):
+        event = Event.objects.filter(pk=self.kwargs['pk']).first()
+        return event != None and\
+                self.request.user.pk == event.establishment.user.pk
+
+      
 class DeleteBand( UserPassesTestMixin, DeleteView):
     model = Band
     success_url = reverse_lazy('home')
@@ -72,10 +92,4 @@ class DeleteEstablishment(UserPassesTestMixin, DeleteView):
         establishment = Establishment.objects.filter(pk=self.kwargs['pk']).first()
         return establishment != None and \
                 self.request.user.pk == establishment.user.pk
-
-
-
-
-
-
 
