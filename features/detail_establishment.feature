@@ -13,6 +13,5 @@ Feature: Detail establishment
   Scenario: Show establishment information
     When I visit the establishment with name "Tremola"
     Then I view all of the establishment information. 
-      | name     | address     | mail                 | mobile    |
-      | Tremola  | C.Major n 9 | tremola@gmail.com    | 100000001 |
-    And The list contains 1 establishments
+      | name                     | address     | mail                 | mobile    | user        |
+      | Establishment : Tremola  | C.Major n 9 | tremola@gmail.com    | 100000001 | Tremola     |

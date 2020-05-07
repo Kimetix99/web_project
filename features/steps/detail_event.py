@@ -11,15 +11,15 @@ def step_impl(context, event_name):
 
 @then(u'I view all of the event information.')
 def step_impl(context):
-    name = context.browser.find_by_name('name')
+    names = context.browser.find_by_name('name')
     state = context.browser.find_by_name('state')
-    date = context.browser.find_by_name('date')
+    # date = context.browser.find_by_name('date')
     description = context.browser.find_by_name('description')
     establishment = context.browser.find_by_name('establishment')
     for i, row in enumerate(context.table):
         assert row['name'] == names[i].text
         assert row['state'] == state[i].text
-        assert row['date'] == date[i].text
+        # assert row['date'] == date[i].text
         assert row['description'] == description[i].text
         assert row['establishment'] == establishment[i].text
 
