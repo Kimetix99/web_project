@@ -8,7 +8,6 @@ User = get_user_model()
 
 class DetailBandTest(TestCase):
 
-    global band
 
     def setUp(self):
         user1 = User.objects.create_user(username="paquito", password="testingpaco123", email="paco@gmail.com", first_name="Paco", last_name="Rodriguez")
