@@ -25,13 +25,15 @@ Feature: Delete an event
 
   Scenario:
     Given I'm logged as user "Tremola" with password "patata"
-    When I try deleting the event with name "PrimaveraSound"
-    Then There is no event with the name "PrimaveraSound"
+    When I try deleting the event with "name" "PrimaveraSound"
+    Then There is no event with the "name" "PrimaveraSound"
     And Im vewing deletion successful page
+    And There are 2 events
 
   Scenario:
     Given I'm logged as user "Tremola" with password "patata"
-    When I try deleting the event with name "Festiuet"
-    Then There is a event with name "Festiuet"
+    When I try deleting the event with "name" "Festiuet"
+    Then There is a event with "name" "Festiuet"
     And I'm viewing deletion unsuccessful page
+    And There are 3 events
 
