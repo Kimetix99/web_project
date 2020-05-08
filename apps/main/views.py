@@ -43,7 +43,21 @@ class CreateEstablishmentView(LoginRequiredMixin, CreateView):
         return super(CreateEstablishmentView, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse('establishment_detail', kwargs={'pk':self.object.pk})
+        return reverse('establishment_detail', kwargs={'pk': self.object.pk})
+
+
+class CreateEventView(LoginRequiredMixin, CreateView):
+    model = Event
+    fields = ['name', 'band', 'state',
+              'date', 'description', 'establishment']
+    template_name = 'event/create.html'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(CreateEventView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('event_detail', kwargs={'pk': self.object.pk})
 
 
 class BandDetail(DetailView):
