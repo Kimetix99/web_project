@@ -9,7 +9,7 @@ def step_impl(context, user, password):
     get_user_model().objects.create_user(username=user, password=password, email='b@b.c')
 
 
-@given(u'I\'m registrated as user "{user}" with password "{password}"')
+@given(u'I\'m logged as user "{user}" with password "{password}"')
 def step_impl(context, user, password):
     context.browser.visit(context.get_url('/accounts/login/?next=/band/create/)'))
     context.browser.fill('username', user)

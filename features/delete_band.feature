@@ -12,13 +12,14 @@ Feature: Delete a band
 
 
   Scenario:
-    Given I'm registrated as user "Tremola" with password "patata"
-    When I try deleting the band with email "tremola@gmail.com"
+    Given I'm logged as user "Tremola" with password "patata"
+    When I try deleting the band with "email" "tremola@gmail.com"
     Then There is no band with the email "tremola@gmail.com"
     And I'm viewing deletion successful page
 
   Scenario:
-    Given I'm registrated as user "Tremola" with password "patata"
-    When I try deleting the band with email "pecadets@gmail.com"
+    Given I'm logged as user "Tremola" with password "patata"
+    When I try deleting the band with "email" "pecadets@gmail.com"
     Then There is a band with email "pecadets@gmail.com"
     And I'm viewing deletion unsuccessful page
+    And There is 1 band
