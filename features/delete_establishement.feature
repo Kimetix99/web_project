@@ -12,12 +12,15 @@ Feature: Delete a Establishement
 
   Scenario: 
     Given I'm logged as user "Tremola" with password "patata"
-    When I try deleting the establishment with email "tremola@gmail.com"
-    Then There is no establishment with the email "tremola@gmail.com"
+    When I try deleting the establishment with "email" "tremola@gmail.com"
+    Then There is no establishment with the "email" "tremola@gmail.com"
     And I'm viewing deletion successful page
+    And There are 2 establishments
+
 
   Scenario:
     Given I'm logged as user "Tremola" with password "patata"
-    When I try deleting the establishment with email "pecadets@gmail.com"
-    Then There is am establishment with the email "pecadets@gmail.com"
+    When I try deleting the establishment with "email" "pecadets@gmail.com"
+    Then There is am establishment with the "email" "pecadets@gmail.com"
     And I'm viewing deletion unsuccessful page
+    And There are 3 establishments
