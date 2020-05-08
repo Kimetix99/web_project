@@ -21,7 +21,7 @@ def step_impl(context, name, value):
 
 @then(u'Server responds with page containing {status_code:n}')
 def step_impl(context, status_code):
-    assert context.browser.status_code == status_code
+    assert context.browser.status_code.code == status_code
 
 
 @when(u'I click button named "{name}"')

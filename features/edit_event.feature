@@ -16,7 +16,7 @@ Feature: Edit an event
     And Exists user "user2" with password "password"
 
   Scenario: Edit owned event
-    Given I'm registrated as user "Tremola" with password "patata"
+    Given I'm logged as user "Tremola" with password "patata"
     When I visit the event with name "Acampada Jove"
     And I click button named "edit"
     And I fill camp "{state}" with value "{closed}"
@@ -30,6 +30,6 @@ Feature: Edit an event
     Then There is no name "edit"
 
   Scenario: Try to edit event but I am not the owner
-    Given I'm registrated as user "user2" with password "password"
+    Given I'm logged as user "user2" with password "password"
     When I visit the event with name "Acampada Jove"
     Then There is no name "edit"

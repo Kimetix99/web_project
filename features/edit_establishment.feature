@@ -11,7 +11,7 @@ Feature: Edit a Establishement
 
 
   Scenario: Edit owned establishment registry email
-    Given I'm registrated as user "user1" with password "password"
+    Given I'm logged as user "user1" with password "password"
     When I visit the establishment with name "Tremola"
     And I click button named "edit"
     And I fill camp "{email}" with value "{b@b.com}"
@@ -25,12 +25,13 @@ Feature: Edit a Establishement
     Then There is no name "edit"
 
   Scenario: Try to edit establishment but not the owner no edit button
-    Given I'm registrated as user "user2" with password "password"
+    Given I'm logged as user "user2" with password "password"
     When I visit the establishment with name "Tremola"
     Then There is no name "edit"
 
   Scenario: Force edit establishment but not the owner permission exception
-    Given I'm registrated as user "user2" with password "password"
+    Given I'm logged as user "user2" with password "password"
     When I try to visit edit page of establishment "Tremola"
-    Then Server responds with page containing 403
+    Then Title is "403 Forbidden"
+    #Then Server responds with page containing 403
 

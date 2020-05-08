@@ -10,7 +10,7 @@ Feature: Edit a band
       | user1       | password | https://soundcloud.com/skeewiff      |  https://soundcloud.com/dj-elye/sets/jazz   | tremola@gmail.com    | 100000001 | itaca band        |
 
   Scenario: Edit owned band registry email
-    Given I'm registrated as user "user1" with password "password"
+    Given I'm logged as user "user1" with password "password"
     When I visit the band with name "itaca band"
     And I click button named "edit"
     And I fill camp "{email}" with value "{b@b.com}"
@@ -24,11 +24,12 @@ Feature: Edit a band
     Then There is no name "edit"
 
   Scenario: Try to edit a band but I am not the owner so there is no edit button
-    Given I'm registrated as user "user2" with password "password"
+    Given I'm logged as user "user2" with password "password"
     When I visit the band with name "itaca band"
     Then There is no name "edit"
 
   Scenario: Force edit band but not the owner permission exception
-    Given I'm registrated as user "user2" with password "password"
+    Given I'm logged as user "user2" with password "password"
     When I try to visit edit page of band "itaca band"
-    Then Server responds with page containing 403
+    Then Title is "403 Forbidden"
+    #Then Server responds with page containing 403

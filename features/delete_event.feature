@@ -26,14 +26,16 @@ Feature: Delete an event
   Scenario:
     Given I'm logged as user "Tremola" with password "patata"
     When I try deleting the event with "name" "PrimaveraSound"
+    And I click button named "delete"
     Then There is no event with the "name" "PrimaveraSound"
-    And Im vewing deletion successful page
+    # And Server responds with page containing 302
+    # Splinter does not implement status_code, yet it is in the documentation (seen from source code)
     And There are 2 events
 
   Scenario:
     Given I'm logged as user "Tremola" with password "patata"
     When I try deleting the event with "name" "Festiuet"
     Then There is a event with "name" "Festiuet"
-    And I'm viewing deletion unsuccessful page
+    #And Server responds with page containing 403
     And There are 3 events
 
