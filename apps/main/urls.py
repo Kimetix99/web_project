@@ -12,6 +12,8 @@ urlpatterns = [
         name='establishment_create'),
     path('establishment/', views.ListEstablishment.as_view(),
         name='establishment_list'),
+    path('event/create', views.CreateEventView.as_view(),
+        name='event_create'),
     path('event/', views.ListEvent.as_view(),
         name='event_list'),
 ]

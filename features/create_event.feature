@@ -4,7 +4,7 @@ Feature: Create Event
   I want to create an event along with its name, the band list, state, date and description and I want the
     establishment set as the owner.
 
-  Background: There are registered user, an establishment created by one of them, and there is a band also created by one of them.
+  Background: There are registered user, an establishment created by one of them, and there is also a band created by one of them.
     Given There is an establishment
 
   Scenario: Create a Band with a name, band list, state, date, description
