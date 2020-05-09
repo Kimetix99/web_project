@@ -25,7 +25,7 @@ class EventTestCase(TestCase):
         now = timezone.now()
         user2 = User.objects.create(username="paquito", password="testingpaco123", email="paco@gmail.com", first_name="Paco", last_name="Rodriguez")
         establishment = Establishment.objects.create(name="Bar Paco", address="C/Major n9", email="paco96@gmail.com", mobile="000000000", image="profile.png", user=user2)
-        Event.objects.create(name="Primavera Sound", date=now, description="Festival de música", user=user2)
+        Event.objects.create(name="Primavera Sound", date=now, description="Festival de música", establishment=establishment)
 
     def test_insert_event(self):
         event_query = Event.objects.get(name="Primavera Sound")

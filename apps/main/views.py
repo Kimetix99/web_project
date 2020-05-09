@@ -3,6 +3,9 @@ from .models import Event, Establishment, Band
 from django.views.generic import CreateView, DetailView, ListView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse, reverse_lazy
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse, reverse_lazy
 
 
 
@@ -49,24 +52,7 @@ class CreateEstablishmentView(LoginRequiredMixin, CreateView):
         return super(CreateEstablishmentView, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse('establishment_detail', kwargs={'pk': self.object.pk})
-
-
-class CreateEventView(UserPassesTestMixin, CreateView):
-    model = Event
-    fields = ['name', 'band', 'state',
-              'date', 'description']
-    template_name = 'event/create.html'
-
-    def test_func(self):
-        return Establishment.objects.filter(user=self.request.user.pk).first() != None
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super(CreateEventView, self).form_valid(form)
-
-    def get_success_url(self):
-        return reverse('event_detail', kwargs={'pk': self.object.pk})
+        return reverse('establishment_detail', kwargs={'pk':self.object.pk})
 
 class EditBandView(UserPassesTestMixin, UpdateView):
     model = Band
