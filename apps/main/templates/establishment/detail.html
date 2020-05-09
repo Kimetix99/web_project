@@ -47,6 +47,15 @@
           </div>
         {% endfor %}
     </div>
+    {% if user.is_authenticated %}
+        {% if user == object.user %}
+            <div class="row" style="padding-top: 20px">
+                <a href="{% url "establishment_edit" establishment.pk %}" class="btn btn-dark"><i class="fas fa-edit"></i> Edit Establishment</a>
+                <div class="col-xs-1">&nbsp;</div>
+                <a href="{% url "establishment_delete" establishment.pk %}" class="btn btn-danger"><i class="fas fa-trash"></i> Delete Establishment</a>
+            </div>
+        {% endif %}
+    {% endif %}
     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
         &nbsp;
     </div>

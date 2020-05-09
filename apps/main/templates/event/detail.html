@@ -59,6 +59,15 @@
           </div>
         {% endfor %}
     </div>
+    {% if user.is_authenticated %}
+        {% if user == object.establishment.user %}
+            <div class="row" style="padding-top: 20px">
+                <a href="{% url "event_edit" event.pk %}" class="btn btn-dark"><i class="fas fa-edit"></i> Edit Event</a>
+                <div class="col-xs-1">&nbsp;</div>
+                <a href="{% url "event_delete" event.pk %}" class="btn btn-danger"><i class="fas fa-trash"></i> Delete Event</a>
+            </div>
+        {% endif %}
+    {% endif %}
     <div class="col-xs-3">
         &nbsp;
     </div>
