@@ -7,14 +7,14 @@
     <div class="col-lg-6 col-sm-12 p-3 p-5-md">
       <div class="card">
         {% if band.image %}
-        <img src="{{ band.image.url }}" class="card-img-top" alt="{{ band.user.username }}">
+        <img src="{{ band.image.url }}" class="card-img-top" alt="{{ band.name }}">
         {% endif %}
         <div class="card-body">
-          <h5 class="card-title" name="list_element">{{ band.user.username }}</h5>
+          <h5 class="card-title" name="list_name">{{ band.name }}</h5>
           <p class="card-text" name="list_mail">{{ band.email }}</p>
           <p class="card-text" name="list_mobile">{{ band.mobile }}</p>
-          {% comment %}<a href="{% url band_detail band.pk %}" class="btn btn-primary">View details</a>{% endcomment %}
-          <a href="#" class="btn btn-primary">View details</a>
+          <a href="{% url "band_detail" band.pk %}" class="btn btn-dark">View details</a>
+          <!--<a href="#" class="btn btn-primary">View details</a>-->
         </div>
       </div>
     </div>

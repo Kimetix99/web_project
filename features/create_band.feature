@@ -8,9 +8,9 @@ Feature: Create Band
     Given Exists user "user" with password "password"
 
   Scenario:
-    Given I'm registrated as user
-    When I try to establish as band with web_link "https://google.com" playlist "https://soundcloud.com/djhostyle/sets/top-reggaeton-2020-hits" contacte_email "a@a.com" contacte_mobil "123780"
-    Then I'm viewing detail page of band with web_link "https://google.com" playlist "https://soundcloud.com/djhostyle/sets/top-reggaeton-2020-hits" contacte_email "a@a.com" contacte_mobil "123780"
+    Given I'm logged as user "user" with password "password"
+    When I try to establish as band with web_link "https://google.com" playlist "https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0" contacte_email "a@a.com" contacte_mobil "123780"
+    Then I'm viewing detail page of band with web_link "https://google.com" playlist "https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0" contacte_email "a@a.com" contacte_mobil "123780"
 
   Scenario:
     When I try to establish a band

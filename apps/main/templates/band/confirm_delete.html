@@ -1,0 +1,12 @@
+{% extends '_base.html' %}
+{% block title %}Vibely - Delete band{% endblock title %}
+
+
+{% block content %}
+
+<form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ object.name }}"?</p>
+    <input type="submit" value="Confirm" name="delete">
+</form>
+
+{% endblock content %}
