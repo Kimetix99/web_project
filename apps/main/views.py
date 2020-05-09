@@ -1,14 +1,20 @@
 from django.shortcuts import render
 from .models import Event, Establishment, Band
 from django.views.generic import CreateView, DetailView, ListView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse, reverse_lazy
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse, reverse_lazy
+
 
 def home(request):
     return render(request, 'home.html', {})
 
+
 def search(request):
     return render(request, 'search.html', {})
+
 
 def sign_in(request):
     return render(request, 'registration/login.html', {})
@@ -20,18 +26,30 @@ def sign_up(request):
 
 class CreateBandView(LoginRequiredMixin, CreateView):
     model = Band
-    fields = ['web_link', 'playlist', 
-            'email', 'mobile', 'image']
+    fields = ['web_link', 'playlist',
+              'email', 'mobile', 'image']
     template_name = 'band/create.html'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(CreateBandView, self).form_valid(form)
 
-    
     def get_success_url(self):
         # Overrided method
-        return reverse('band_detail', kwargs={'pk':self.object.pk})
+        return reverse('band_detail', kwargs={'pk': self.object.pk})
+
+
+class EditBandView(UserPassesTestMixin, UpdateView):
+    model = Band
+    fields = ['name', 'web_link', 'playlist',
+              'email', 'mobile', 'image']
+    template_name = 'band/edit.html'
+    success_url = reverse_lazy('home')
+
+    def test_func(self):
+        band = Band.objects.filter(pk=self.kwargs['pk']).first()
+        return band != None and self.request.user.pk == band.user.pk
+
 
 class BandDetail(DetailView):
     model = Band
@@ -43,6 +61,19 @@ class BandDetail(DetailView):
         events = Event.objects.filter(band=band).order_by('-date')
         context["list_events"]=events
         return context
+
+class EditEstablishmentView(UserPassesTestMixin, UpdateView):
+    model = Establishment
+    fields = ['name', 'address',
+              'email', 'mobile', 'image']
+    template_name = 'establishment/edit.html'
+
+    success_url = reverse_lazy('home')
+
+    def test_func(self):
+        establishment = Establishment.objects.filter(pk=self.kwargs['pk']).first()
+        return establishment != None and self.request.user.pk == establishment.user.pk
+
 
 class EstablishmentDetail(DetailView):
     model = Establishment
@@ -58,6 +89,7 @@ class EstablishmentDetail(DetailView):
 class EventDetail(DetailView):
     model = Event
     template_name = 'event/detail.html'
+
 
 class ListEstablishment(ListView):
     model = Establishment
@@ -79,19 +111,19 @@ class ListEvent(ListView):
     def get_queryset(self, *args, **kwargs):
         return self.model.objects.all().order_by('-date')
 
+
 class DeleteEvent(UserPassesTestMixin, DeleteView):
     model = Event
     success_url = reverse_lazy('home')
     template_name = 'event/confirm_delete.html'
 
-    
     def test_func(self):
         event = Event.objects.filter(pk=self.kwargs['pk']).first()
-        return event != None and\
-                self.request.user.pk == event.establishment.user.pk
+        return event != None and \
+               self.request.user.pk == event.establishment.user.pk
 
-      
-class DeleteBand( UserPassesTestMixin, DeleteView):
+
+class DeleteBand(UserPassesTestMixin, DeleteView):
     model = Band
     success_url = reverse_lazy('home')
     template_name = 'band/confirm_delete.html'
@@ -101,12 +133,25 @@ class DeleteBand( UserPassesTestMixin, DeleteView):
         return band != None and self.request.user.pk == band.user.pk
 
 
+class EditEventView(UserPassesTestMixin, UpdateView):
+    model = Event
+    fields = ['name', 'band',
+              'state', 'date', 'description']
+    template_name = 'event/edit.html'
+
+    success_url = reverse_lazy('home')
+
+    def test_func(self):
+        event = Event.objects.filter(pk=self.kwargs['pk']).first()
+        return event != None and self.request.user.pk == event.establishment.user.pk
+
+
 class DeleteEstablishment(UserPassesTestMixin, DeleteView):
     model = Establishment
     success_url = reverse_lazy('home')
     template_name = 'establishment/confirm_delete.html'
+
     def test_func(self):
         establishment = Establishment.objects.filter(pk=self.kwargs['pk']).first()
         return establishment != None and \
-                self.request.user.pk == establishment.user.pk
-
+               self.request.user.pk == establishment.user.pk
