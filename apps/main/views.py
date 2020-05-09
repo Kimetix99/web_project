@@ -21,7 +21,7 @@ def sign_up(request):
 
 class CreateBandView(LoginRequiredMixin, CreateView):
     model = Band
-    fields = ['web_link', 'playlist',
+    fields = ['name', 'web_link', 'playlist',
               'email', 'mobile', 'image']
     template_name = 'band/create.html'
 
@@ -106,7 +106,7 @@ class DeleteEvent(UserPassesTestMixin, DeleteView):
     def test_func(self):
         event = Event.objects.filter(pk=self.kwargs['pk']).first()
         return event != None and\
-                self.request.user.pk == event.establishment.user.pk
+                self.request.user.pk == event.user.pk
 
       
 class DeleteBand( UserPassesTestMixin, DeleteView):
