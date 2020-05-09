@@ -23,7 +23,7 @@ urlpatterns = [
          name='event_delete'),
     path('event/<int:pk>', views.EventDetail.as_view(),
          name='event_detail'),
-    path('event/edit/<int:pk>', views.EditEventView.as_view()),
+    path('event/edit/<int:pk>', views.EditEventView.as_view(), name='event_edit'),
     path('band/delete/<int:pk>', views.DeleteBand.as_view(),
          name='band_delete'),
     path('establishment/delete/<int:pk>',

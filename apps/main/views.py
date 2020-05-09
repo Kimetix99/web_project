@@ -39,12 +39,16 @@ class CreateBandView(LoginRequiredMixin, CreateView):
         return reverse('band_detail', kwargs={'pk': self.object.pk})
 
 
-    class EditBandView(UpdateView):
-        model = Band
-        fields = ['name', 'web_link', 'playlist',
-                  'email', 'mobile', 'image']
-        template_name = 'band/edit.html'
-        success_url = reverse_lazy('home')
+class EditBandView(UserPassesTestMixin, UpdateView):
+    model = Band
+    fields = ['name', 'web_link', 'playlist',
+              'email', 'mobile', 'image']
+    template_name = 'band/edit.html'
+    success_url = reverse_lazy('home')
+
+    def test_func(self):
+        band = Band.objects.filter(pk=self.kwargs['pk']).first()
+        return band != None and self.request.user.pk == band.user.pk
 
 
 class BandDetail(DetailView):
@@ -52,13 +56,17 @@ class BandDetail(DetailView):
     template_name = 'band/detail.html'
 
 
-class EditEstablishmentView(UpdateView):
+class EditEstablishmentView(UserPassesTestMixin, UpdateView):
     model = Establishment
     fields = ['name', 'address',
               'email', 'mobile', 'image']
     template_name = 'establishment/edit.html'
 
     success_url = reverse_lazy('home')
+
+    def test_func(self):
+        establishment = Establishment.objects.filter(pk=self.kwargs['pk']).first()
+        return establishment != None and self.request.user.pk == establishment.user.pk
 
 
 class EstablishmentDetail(DetailView):
@@ -113,13 +121,17 @@ class DeleteBand(UserPassesTestMixin, DeleteView):
         return band != None and self.request.user.pk == band.user.pk
 
 
-class EditEventView(UpdateView):
+class EditEventView(UserPassesTestMixin, UpdateView):
     model = Event
     fields = ['name', 'band',
               'state', 'date', 'description']
     template_name = 'event/edit.html'
 
     success_url = reverse_lazy('home')
+
+    def test_func(self):
+        event = Event.objects.filter(pk=self.kwargs['pk']).first()
+        return event != None and self.request.user.pk == event.establishment.user.pk
 
 
 class DeleteEstablishment(UserPassesTestMixin, DeleteView):

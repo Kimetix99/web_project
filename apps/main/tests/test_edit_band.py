@@ -16,7 +16,7 @@ class EditBandTest(TestCase):
                                         playlist='https://soundcloud.com/dj-elye/sets/jazz', email="skeewiff@gmail.com",
                                         mobile="000000000", user=user1)
 
-    def test_bands_edit_template(self):
+    def test_band_edit_template(self):
         self.client.login(username='user', password='testpass123')
         self.response = self.client.get(reverse("band_edit", kwargs={'pk': self.band.pk}))
         self.assertEqual(self.response.status_code, 200)
@@ -25,7 +25,7 @@ class EditBandTest(TestCase):
         self.response = self.client.get(reverse("band_edit", kwargs={'pk': self.band.pk}))
         self.assertEqual(self.response.status_code, 302)
         self.assertRedirects(self.response, '%s?next=%s' %
-                (reverse('login'), reverse('band_edit'))
+                (reverse('login'), reverse('band_edit', kwargs={'pk': self.band.pk}))
                 )
 
 
