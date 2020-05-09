@@ -20,6 +20,8 @@ class EditBandTest(TestCase):
         self.client.login(username='user', password='testpass123')
         self.response = self.client.get(reverse("band_edit", kwargs={'pk': self.band.pk}))
         self.assertEqual(self.response.status_code, 200)
+        self.assertTemplateUsed('band/edit.html')
+        self.assertTemplateUsed('_base.html')
 
     def test_not_login(self):
         self.response = self.client.get(reverse("band_edit", kwargs={'pk': self.band.pk}))

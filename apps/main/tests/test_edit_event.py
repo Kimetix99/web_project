@@ -19,10 +19,12 @@ class EditEventTest(TestCase):
         self.ev1 = Event.objects.create(name='Primavera Sound', state='SR', date=date1, description="Short Description",
                          establishment=est1)
 
-    def test_establishment_edit_template(self):
+    def test_event_edit_template(self):
         self.client.login(username='user', password='testpass123')
         self.response = self.client.get(reverse("event_edit", kwargs={'pk': self.ev1.pk}))
         self.assertEqual(self.response.status_code, 200)
+        self.assertTemplateUsed('event/edit.html')
+        self.assertTemplateUsed('_base.html')
 
     def test_not_login(self):
         self.response = self.client.get(reverse("event_edit", kwargs={'pk': self.ev1.pk}))

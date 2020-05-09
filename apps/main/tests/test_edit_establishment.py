@@ -19,6 +19,8 @@ class EditEstablishmentTest(TestCase):
         self.client.login(username='user', password='testpass123')
         self.response = self.client.get(reverse("establishment_edit", kwargs={'pk': self.establishment.pk}))
         self.assertEqual(self.response.status_code, 200)
+        self.assertTemplateUsed('establishment/edit.html')
+        self.assertTemplateUsed('_base.html')
 
     def test_not_login(self):
         self.response = self.client.get(reverse("establishment_edit", kwargs={'pk': self.establishment.pk}))
