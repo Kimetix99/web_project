@@ -12,6 +12,8 @@ services:
       - ${OPEN_PORT}:${DJANGO_PORT}
     depends_on:
       - db
+    stdin_open: true
+    tty: true
   db:
     image: postgres:11
     volumes:

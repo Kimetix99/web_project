@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'apps.users',
     'apps.main',
+    'behave_django',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -63,7 +64,7 @@ ROOT_URLCONF = 'Vibely.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': ['Vibely/templates/']
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -133,9 +134,14 @@ REST_FRAMEWORK = {
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
