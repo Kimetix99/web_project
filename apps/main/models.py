@@ -47,7 +47,7 @@ class Event(models.Model):
     state = models.CharField('State of the event', max_length=2, choices=STATE, default="SR")
     date = models.DateTimeField('Date of the event', null=False)
     description = models.TextField()
-    establishment = models.ForeignKey('Establishment', on_delete=models.CASCADE, null=False, related_name='events')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, related_name='events')
     class Meta:
         permissions = [
                 ('event_owner', 'User owner of the establishment owner of the Event'),
@@ -65,7 +65,7 @@ class Establishment(models.Model):
     email = models.CharField('Email to contact you', max_length=100)
     mobile = models.CharField('Mobile phone to contact you', max_length=16)
     image = models.ImageField('An image of the establishment', upload_to='img/', default=None, blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, related_name='establishments')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=False, related_name='establishments')
 
     class Meta:
         permissions = [

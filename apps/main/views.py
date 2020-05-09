@@ -89,6 +89,12 @@ class EventDetail(DetailView):
     model = Event
     template_name = 'event/detail.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        est = Establishment.objects.get(user=self.object.user)
+        context['establishment'] = est
+        return context
+
 
 class ListEstablishment(ListView):
     model = Establishment
