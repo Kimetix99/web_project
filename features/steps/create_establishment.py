@@ -8,7 +8,7 @@ def step_impl(context, user, password):
     get_user_model().objects.create_user(username=user, password=password, email='b@b.c')
 
 
-@given(u'I login as user "user" with password "password"')
+@given(u'I'm loged as user "user" with password "password"')
 def step_impl(context):
     context.browser.visit(context.get_url('/accounts/login/?next=/establishment/create/)'))
     context.browser.fill('username', "user")

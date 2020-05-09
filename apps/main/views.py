@@ -123,6 +123,13 @@ class DeleteEstablishment(UserPassesTestMixin, DeleteView):
     template_name = 'establishment/confirm_delete.html'
     def test_func(self):
         establishment = Establishment.objects.filter(pk=self.kwargs['pk']).first()
-        return establishment != None and \
-                self.request.user.pk == establishment.user.pk
+        if establishment != None and \
+                self.request.user.pk == establishment.user.pk:
+            remove_events(self.request.user)
+            return True
+    
+def remove_events(user):
+    events = Event.objects.filter(user=user)
+    for event in events:
+        event.delete()
 
