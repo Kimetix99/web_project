@@ -49,7 +49,7 @@ class CreateEstablishmentView(LoginRequiredMixin, CreateView):
 class CreateEventView(UserPassesTestMixin, CreateView):
     model = Event
     fields = ['name', 'band', 'state',
-              'date', 'description', 'establishment']
+              'date', 'description']
     template_name = 'event/create.html'
 
     def test_func(self):
