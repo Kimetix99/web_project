@@ -3,13 +3,13 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 
 
-class CreateBandTest(TestCase):
+class CreateEventsTest(TestCase):
 
     def setUp(self):
-        self.url = reverse('band_create')
+        self.url = reverse('event_create')
         get_user_model().objects.create_user(username='user', password='testpass123')
 
-    def test_band_create_template(self):
+    def test_event_create_template(self):
         self.client.login(username='user', password='testpass123')
         self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 200)
@@ -18,4 +18,4 @@ class CreateBandTest(TestCase):
         self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 302)
         self.assertRedirects(self.response, '%s?next=%s' %
-                             (reverse('login'), reverse('band_create')))
+                             (reverse('login'), reverse('event_create')))

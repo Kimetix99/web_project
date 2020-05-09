@@ -12,7 +12,7 @@ Feature: Create Establishment
       When I try to establish an establishment
       And I fill the form with
         | name     | address     | email                 | mobile    | submit_name         |
-        | Tremola  | C.Major n 9 | tremola@gmail.com    | 100000001 | establishmentsubmit | 
+        | Tremola  | C.Major n 9 | tremola@gmail.com    | 100000001 | establishmentsubmit  | 
       Then I view all of the establishment information. 
         | name     | address     | mail                 | mobile    | user        |
         | Tremola  | C.Major n 9 | tremola@gmail.com    | 100000001 | user        |
