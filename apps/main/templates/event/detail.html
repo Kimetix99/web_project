@@ -1,16 +1,48 @@
 {% extends '_base.html' %}
+{% load static %}
 {% block title %}Event detail - {{ object.name }}{% endblock title %}
 {% block content %}
     <div class="col-xs-3">
         &nbsp;
     </div>
-    <div class="col-xs-6">
-      <h2 name="name">Event : {{ object.name }}</h2>
-      <p name="state">{{object.state}}</p>
-      <p name="date">{{object.date|date}}</p>
-      <p name="description">{{object.description}}</p>
-      <p name="establishment">{{object.establishment.name}}</p>
-      </p>
+    <div class="col-xs-12" align="center">
+        <h1 name="name"><i class="fas fa-calendar-week"></i> {{ object.name }}</h1>
+    </div>
+    <div class="imgbox">
+        <img class="center-fit" src="{% static 'img/esdeveniment.jpg' size=100%}" alt="Architecture">
+    </div> 
+    <div class="col-xs-12" align="center" style="background-color: #8EE3B6;">
+        <h1 name="name"><i class="fas fa-info-circle"></i> Information:</h1>
+    </div>
+    <div class="row" style="font-size: 20px;">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <h3><strong>State:</strong></h3> 
+            <input id = "SR" type="checkbox" disabled>
+            <label> Searching</label><br>
+            <input id ="CL" type="checkbox" disabled>
+            <label>Closed</label><br>
+            <input id ="FN" type="checkbox" disabled>
+            <label>Finished</label><br><br>
+        </div>
+        <script>
+            document.getElementById("{{ object.state }}").checked = true;
+        </script>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <h3><strong>Date:</strong></h3> 
+            <p name="date">{{object.date|date}}</p>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <h3><strong>Establishmnet name:</strong></h3> 
+            <a style="color:blue;" href="{% url "establishment_detail" object.establishment.pk %}"><p name="establishment">{{object.establishment.name}}</p></a>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <h3><strong>Event Place:</strong></h3> 
+            <p name="establishment">{{object.establishment.address}}</p> 
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <h3><strong>Description:</strong></h3>  
+            <p name="description">{{object.description}}</p> 
+        </div>
     </div>
     <div class="col-xs-3">
         &nbsp;
