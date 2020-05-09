@@ -5,9 +5,13 @@
         &nbsp;
     </div>
     <div class="col-xs-6">
-      <h2>Band : {{ object.name }}</h2>
-      <p>{{object.web_link}}, {{object.playlist}}</p>
-      <p>{{object.contacte_email}}, {{object.contacte_mobil}},
+      <h2 name="name">Band : {{ object.name }}</h2>
+      <div class="col-xs-12">
+        <iframe src="{{object.playlist}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      </div>
+      <a name="web_link" href="{{object.web_link}}">{{object.web_link}}</a>
+      <p name="email">{{object.email}}</p> 
+      <p name="mobile">{{object.mobile}}</p>
       </p>
     </div>
     <div class="col-xs-3">

@@ -16,6 +16,7 @@ from django.urls import reverse
 
 
 class Band(models.Model):
+    name = models.CharField('Name of the band', max_length=255)
     web_link = models.URLField('Web Link to Portfolio', max_length=255)
     playlist = models.URLField('SoundCloud Playlist', max_length=300)
     email = models.CharField('A contact email', max_length=100)
@@ -56,6 +57,8 @@ class Event(models.Model):
     def __str__(self):
         return f'Event(pk={self.pk}, name={self.name}, state={self.state}, date={self.date}, user={self.user.username})'
 
+    def get_absolute_url(self):
+        return reverse('event_detail', kwargs={'pk':self.pk})
 
 class Establishment(models.Model):
     name = models.CharField('Establishment name', max_length=300, blank=True)
@@ -72,4 +75,5 @@ class Establishment(models.Model):
     def __str__(self):
         return f'Establishment(pk={self.pk}, name={self.name}, address={self.address}, user={self.user.username})'
 
-
+    def get_absolute_url(self):
+        return reverse('establishment_detail', kwargs={'pk':self.pk})

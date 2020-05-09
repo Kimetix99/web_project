@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from .models import Event, Establishment, Band
-from django.views.generic import CreateView, DetailView, ListView
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.urls import reverse
+from django.views.generic import CreateView, DetailView, ListView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
+from django.urls import reverse, reverse_lazy
 
 
 def home(request):
@@ -67,6 +67,13 @@ class BandDetail(DetailView):
     model = Band
     template_name = 'band/detail.html'
 
+class EstablishmentDetail(DetailView):
+    model = Establishment
+    template_name = 'establishment/detail.html'
+
+class EventDetail(DetailView):
+    model = Event
+    template_name = 'event/detail.html'
 
 class ListEstablishment(ListView):
     model = Establishment
@@ -87,3 +94,35 @@ class ListEvent(ListView):
 
     def get_queryset(self, *args, **kwargs):
         return self.model.objects.all().order_by('-date')
+
+class DeleteEvent(UserPassesTestMixin, DeleteView):
+    model = Event
+    success_url = reverse_lazy('home')
+    template_name = 'event/confirm_delete.html'
+
+    
+    def test_func(self):
+        event = Event.objects.filter(pk=self.kwargs['pk']).first()
+        return event != None and\
+                self.request.user.pk == event.establishment.user.pk
+
+      
+class DeleteBand( UserPassesTestMixin, DeleteView):
+    model = Band
+    success_url = reverse_lazy('home')
+    template_name = 'band/confirm_delete.html'
+
+    def test_func(self):
+        band = Band.objects.filter(pk=self.kwargs['pk']).first()
+        return band != None and self.request.user.pk == band.user.pk
+
+
+class DeleteEstablishment(UserPassesTestMixin, DeleteView):
+    model = Establishment
+    success_url = reverse_lazy('home')
+    template_name = 'establishment/confirm_delete.html'
+    def test_func(self):
+        establishment = Establishment.objects.filter(pk=self.kwargs['pk']).first()
+        return establishment != None and \
+                self.request.user.pk == establishment.user.pk
+
