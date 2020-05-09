@@ -2,7 +2,6 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
-
 class CreateBandTest(TestCase):
 
     def setUp(self):
@@ -17,5 +16,8 @@ class CreateBandTest(TestCase):
     def test_not_login(self):
         self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 302)
-        self.assertRedirects(self.response, '%s?next=%s' %
-                             (reverse('login'), reverse('band_create')))
+        self.assertRedirects(self.response, '%s?next=%s' % 
+                (reverse('login'), reverse('band_create'))
+                )
+
+
