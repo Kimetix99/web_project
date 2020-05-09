@@ -8,6 +8,8 @@ from django.urls import reverse, reverse_lazy
 def home(request):
     return render(request, 'home.html', {})
 
+def search(request):
+    return render(request, 'search.html', {})
 
 def sign_in(request):
     return render(request, 'registration/login.html', {})
