@@ -3,9 +3,6 @@ from .models import Event, Establishment, Band
 from django.views.generic import CreateView, DetailView, ListView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, DetailView, ListView, UpdateView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse, reverse_lazy
 
 def home(request):
     return render(request, 'home.html', {})
