@@ -83,3 +83,12 @@ class ListEvent(ListView):
         return self.model.objects.all().order_by('-date')
 
 
+class EditEventView(UpdateView):
+    model = Event
+    fields = ['name', 'band',
+              'state', 'date', 'description']
+    template_name = 'event/edit.html'
+
+    success_url = reverse_lazy('home')
+
+
