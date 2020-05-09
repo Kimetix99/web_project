@@ -282,5 +282,4 @@ pip-selfcheck.json
 # End of https://www.gitignore.io/api/venv,django,python,pycharm,visualstudiocode
 .env
 staticfiles/
-img/
 postgres_data/
