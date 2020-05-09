@@ -37,9 +37,23 @@ class BandDetail(DetailView):
     model = Band
     template_name = 'band/detail.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        band = self.model.objects.get(pk=self.kwargs["pk"])
+        events = Event.objects.filter(band=band).order_by('-date')
+        context["list_events"]=events
+        return context
+
 class EstablishmentDetail(DetailView):
     model = Establishment
     template_name = 'establishment/detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        establishment = self.model.objects.get(pk=self.kwargs["pk"])
+        events = Event.objects.filter(establishment=establishment).order_by('-date')
+        context["list_events"]=events
+        return context
 
 class EventDetail(DetailView):
     model = Event
