@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from .models import Event, Establishment, Band
-from django.views.generic import CreateView, DetailView, ListView
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
+
 
 def home(request):
     return render(request, 'home.html', {})
@@ -26,10 +27,18 @@ class CreateBandView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super(CreateBandView, self).form_valid(form)
 
-    
     def get_success_url(self):
         # Overrided method
         return reverse('band_detail', kwargs={'pk':self.object.pk})
+
+
+class EditBandView(UpdateView):
+    model = Band
+    fields = ['name', 'web_link', 'playlist',
+              'email', 'mobile', 'image']
+    template_name = 'band/edit.html'
+    success_url = reverse_lazy('home')
+
 
 class BandDetail(DetailView):
     model = Band
@@ -38,6 +47,16 @@ class BandDetail(DetailView):
 class EstablishmentDetail(DetailView):
     model = Establishment
     template_name = 'establishment/detail.html'
+
+
+class EditEstablishmentView(UpdateView):
+    model = Establishment
+    fields = ['name', 'address',
+              'email', 'mobile', 'image']
+    template_name = 'establishment/edit.html'
+
+    success_url = reverse_lazy('home')
+
 
 class EventDetail(DetailView):
     model = Event
