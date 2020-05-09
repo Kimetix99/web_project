@@ -7,19 +7,10 @@
         &nbsp;
     </div>
     <div class="col-xs-6">
-        <h2>Create a event</h2>
-        <label {{ object.name }}>Name:</label>
-        <input type="text" id= {{ object.name }} name=object.name><br><br>
-        <label {{ object.name }}>Band:</label>
-        <input type="text" id= { object.name }} name=object.name><br><br>
-        <label {{ object.name }}>State:</label>
-        <input type="text" id= { object.name }} name=object.name><br><br>
-        <label {{ object.name }}>Date:</label>
-        <input type="text" id= { object.name }} name=object.name><br><br>
-        <label {{ object.name }}>Description:</label>
-        <input type="text" id= { object.name }} name=object.name><br><br>
-        <label {{ object.name }}>Establishment:</label>
-        <input type="text" id= { object.name }} name=object.name><br><br>
+        <h2>Create an event</h2>
+         <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
         <button class="btn btn-success" type="submit" name="enventsubmit">Submit a Event</button>
         </form>
     </div>

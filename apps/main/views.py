@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Event, Establishment, Band
 from django.views.generic import CreateView, DetailView, ListView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse
 
 
@@ -46,11 +46,14 @@ class CreateEstablishmentView(LoginRequiredMixin, CreateView):
         return reverse('establishment_detail', kwargs={'pk': self.object.pk})
 
 
-class CreateEventView(LoginRequiredMixin, CreateView):
+class CreateEventView(UserPassesTestMixin, CreateView):
     model = Event
     fields = ['name', 'band', 'state',
               'date', 'description', 'establishment']
     template_name = 'event/create.html'
+
+    def test_func(self):
+        return Establishment.objects.filter(user=self.request.user.pk).first() != None
 
     def form_valid(self, form):
         form.instance.user = self.request.user
