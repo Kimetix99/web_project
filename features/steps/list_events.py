@@ -3,18 +3,20 @@ use_step_matcher("parse")
 
 @given(u'There are events')
 def step_impl(context):
-    from apps.main.models import Event, Band, Establishment
+    from django.contrib.auth import get_user_model
     from django.utils import timezone
+    from apps.main.models import Band, Event
+    User = get_user_model()
     for row in context.table:
         date = timezone.now() + timezone.timedelta(days=int(row['date']))
         band = Band.objects.get(email=row['band'])
-        est = Establishment.objects.get(name=row['establishment'])
+        user = User.objects.get(username=row['user'])
         ev = Event(
                 name=row['name'],
                 state=row['state'],
                 date=date,
                 description=row['description'],
-                establishment=est
+                user=user
                 )
         ev.save()
         ev.band.add(band)

@@ -13,7 +13,7 @@ Feature: Edit a band
     Given I'm logged as user "user1" with password "password"
     When I visit the band with name "itaca band"
     And I click button named "edit"
-    And I fill camp "{email}" with value "{b@b.com}"
+    And I fill camp "email" with value "b@b.com"
     Then I view all of the band information. 
       | name               | web_link                             | playlist                                    | mail     | mobile    |
       | Band : itaca band  | https://soundcloud.com/skeewiff      |  https://soundcloud.com/dj-elye/sets/jazz   | b@b.com  | 100000001 |

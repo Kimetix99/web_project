@@ -17,7 +17,7 @@ def step_impl(context):
     description = context.browser.find_by_name('description')
     establishment = context.browser.find_by_name('establishment')
     for i, row in enumerate(context.table):
-        assert row['name'] == names[i].text
+        assert row['name'] in names[i].text
         assert row['state'] == state[i].text
         # assert row['date'] == date[i].text
         assert row['description'] == description[i].text

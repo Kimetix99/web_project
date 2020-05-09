@@ -14,10 +14,10 @@ Feature: Edit a Establishement
     Given I'm logged as user "user1" with password "password"
     When I visit the establishment with name "Tremola"
     And I click button named "edit"
-    And I fill camp "{email}" with value "{b@b.com}"
+    And I fill camp "email" with value "b@b.com"
     Then I view all of the establishment information. 
-      | name                     | address     | mail     | mobile    | user   |
-      | Establishment : Tremola  | C.Major n 9 | b@b.com  | 100000001 | user1  |
+      | name     | address     | mail     | mobile    | user   |
+      | Tremola  | C.Major n 9 | b@b.com  | 100000001 | user1  |
     And There are 1 establishments
 
   Scenario: Try to edit establishment but not logged in

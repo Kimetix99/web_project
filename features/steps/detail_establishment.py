@@ -18,7 +18,7 @@ def step_impl(context):
     mobile = context.browser.find_by_name('mobile')
     user_name = context.browser.find_by_name('user_name')
     for i, row in enumerate(context.table):
-        assert row['name'] == name[i].text, f"{row['name']}, {name[i].text}"
+        assert row['name'] in name[i].text, f"{row['name']}, {name[i].text}"
         assert row['address'] == address[i].text
         assert row['mail'] == mail[i].text
         assert row['mobile'] == mobile[i].text

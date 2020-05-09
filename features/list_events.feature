@@ -15,10 +15,10 @@ Feature: List all events
       | Drei-jazz     | patata   | https://soundcloud.com/drei-jazz     |  https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0   | drei-jazz@gmail.com  | 200000002 | drei-jazz |
       | Tessatiorina  | dracs    | https://soundcloud.com/tessatioarina |  https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0   | tessatio@gmail.com   | 300000003 | tessatio  |
     And There are events
-      |  name            |  band                 |  state  |  date  |  description  |  establishment  |
-      |  Acampada Jove   |  skeewiff@gmail.com   |  CL     |  1     |  Large descr  |  Pecadets       |
-      |  Festiuet        |  drei-jazz@gmail.com  |  FN     |  -1    |  Medium desc  |  Atope          |
-      |  PrimaveraSound  |  tessatio@gmail.com   |  SR     |  4     |  Short descr  |  Tremola        |
+      |  name            |  band                 |  state  |  date  |  description  |  user       |
+      |  Acampada Jove   |  skeewiff@gmail.com   |  CL     |  1     |  Large descr  |  Pecadets   |
+      |  Festiuet        |  drei-jazz@gmail.com  |  FN     |  -1    |  Medium desc  |  Atope      |
+      |  PrimaveraSound  |  tessatio@gmail.com   |  SR     |  4     |  Short descr  |  Tremola    |
 
 
   Scenario: List them all

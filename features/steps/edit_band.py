@@ -12,5 +12,5 @@ def step_impl(context, num):
 def step_impl(context, name):
     from apps.main.models import Band
     band = Band.objects.get(name=name)
-    context.browser.visit(f'band/edit/{band.pk}/')
+    context.browser.visit(f'/band/edit/{band.pk}/')
 
