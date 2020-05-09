@@ -3,6 +3,7 @@ Feature: Create Event
   As a establishment owner
   I want to create an event along with its name, the band list, state, date and description and I want the
     establishment set as the owner.
+<<<<<<< HEAD
 
   Background: There are registered user, an establishment created by one of them, and there is also a band created by one of them.
     Given There are Establishments
@@ -23,3 +24,5 @@ Feature: Create Event
       |  name            |  state  |  date            |  description  |  establishment  |
       |  Acampada Jove   |  SR     |  Jan, 2 2021     |  Large descr  |  Tremola        |
 
+=======
+>>>>>>> bf844a963f27538a6b877c3878a529cda227e7d7
