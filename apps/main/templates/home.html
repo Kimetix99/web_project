@@ -1,14 +1,98 @@
 {% extends '_base.html' %}
-{% block title %} Home Page Vibely {% endblock title %}
+{% load static %}
+{% block title %} Home {% endblock title %}
 {% block content%}
-    <h1>Homepage Vibely</h1>
     {% if user.is_authenticated %}
-        Hi {{ user.username }}!
-        <p><a href="{% url 'logout' %}">Log Out</a></p>
+        <div class="col-xs-12" align="center" style="font-size: 40px; padding:10px;">
+            <img src="{% static 'img/logo.png' %}" width="100" height="100"> Vibely
+        </div>
+        <div class="col-xs-12" align="center" style="font-size: 40px;" style="padding-bottom:20 px;">
+            Hi {{ user.username }}! <i class="fas fa-hand-spock"></i>
+        </div>
+        <div class="row" style="padding: 30px;">
+            <div class="card" style="width: 23rem; background-color: #8EE3B6;">
+                <img class="card-img-top" src="{% static 'img/band.jpg' %}" alt="Card image cap">
+                <div class="card-body">
+                  <h4 class="card-title">Register a band:</h4>
+                  <p class="card-text" style="text-align: justify">If you have a band do not hesitate to register it on Vibely ! This way establishments that organize music events will be able to see your profile and contact you.</p>
+                  <a href="#" class="btn btn-dark"><i class="fas fa-plus"></i> Add Band</a>
+                </div>
+              </div>
+              <div class="col-xs-1">&nbsp;</div>
+            <div class="card" style="width: 23rem; background-color: #8EE3B6;">
+                <img class="card-img-top" src="{% static 'img/establishment.jpg' %}" alt="Card image cap">
+                <div class="card-body">
+                  <h4 class="card-title">Register an establishment:</h4>
+                  <p class="card-text" style="text-align: justify">If you have an establishment and would like to organize an event with live music, register it on Vibely ! This way you can create events and music groups can contact you to play live music.</p>
+                  <a href="#" class="btn btn-dark"><i class="fas fa-plus"></i> Add Establishment</a>
+                </div>
+              </div>
+              <div class="col-xs-1">&nbsp;</div>
+            <div class="card" style="width: 23rem; background-color: #8EE3B6;">
+                <img class="card-img-top" src="{% static 'img/esdeveniment.jpg' %}" alt="Card image cap">
+                <div class="card-body">
+                  <h4 class="card-title">Register an event:</h4>
+                  <p class="card-text" style="text-align: justify">Register your event on Vibely so users can see it ! This way bands will contact you to play live in your event.</p>
+                  <a href="#" class="btn btn-dark"><i class="fas fa-plus"></i> Add Event</a>
+                </div>
+              </div>
+        </div>
     {% else %}
-        <p>You are not logged in.</p>
-        <a href="{% url 'login' %}">Log in </a>
-        <p>If you want to sign up:</p>
-        <a href="{% url 'signup' %}">Sign up</a>
+    <div class="col-xs-12" align="center" style="font-size: 40px; padding:10px;">
+        <img src="{% static 'img/logo.png' %}" width="100" height="100"> Vibely
+    </div>
+        <div class="imgbox">
+            <img class="center-fit" src="{% static 'img/back.png' size=100%}" alt="Architecture">
+        </div>
+        <!-- Page content -->
+        <div class="w3-content w3-padding" style="max-width:1564px">
+        
+            <!-- About Section -->
+            <div class="w3-container w3-padding-32 " id="about">
+            <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16" style="background-color: #8EE3B6; text-align: center;"><i class="fas fa-question-circle"></i> About</h2>
+            <p>Our main inspiration raised on how to increase the efficiency for establishments to contact with bands in orther to do live music and vice versa.     
+                <br>We know that for small bands is dificult to find places to play, and also for establishments to find bands that fits with the music standards of the establishment.
+                <br>In Vibely we want to make all those searchs and transactions easyer for both parts, and to foment the proximity music and local bands. Also we want to increase the number of live music events and help small groups to become bigger and more listened. And obilously encorage people to make here own music, becouse what is a life withou music? ;) 
+            </p>
+            </div>
+        
+            <div class="w3-row-padding">
+            <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16" style="background-color: #8EE3B6; text-align: center;"><i class="fab fa-dev"></i> Members</h2>
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <img src="{% static 'img/joan.png' size=100%}"  alt="Joan Martí" style="width:100%">
+                <h3>Joan Martí</h3>
+                <p class="w3-opacity">Developer</p>
+                <!--<p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>-->
+                <p><a href="https://www.linkedin.com/in/joan-mart%C3%AD-olivart-644b3015a/"class="w3-button w3-grey w3-block" style="background-color: #8EE3B6 !important;">Contact</a></p>
+            </div>
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <img src="{% static 'img/pau.png' size=100%}" alt="Jane" style="width:100%">
+                <h3>Pau Ibañez</h3>
+                <p class="w3-opacity">Developer</p>
+                <!--<p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>-->
+                <p><a href="https://www.linkedin.com/in/pau-ib%C3%A1%C3%B1ez-mill%C3%A1n-1402ab16a/"class="w3-button w3-grey w3-block" style="background-color: #8EE3B6 !important;">Contact</a></p>
+            </div>
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <img src="{% static 'img/quim.png' size=100%}" alt="Mike" style="width:100%">
+                <h3>Quim Picó</h3>
+                <p class="w3-opacity">Developer</p>
+                <!--<p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>-->
+                <p><a href="https://www.linkedin.com/in/joaquim-pic%C3%B3-mora-9a290517b/"class="w3-button w3-grey w3-block" style="background-color: #8EE3B6 !important;">Contact</a></p>
+            </div>
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <img src="{% static 'img/sergi.png' size=100%}" alt="Dan" style="width:100%">
+                <h3>Sergi Simon</h3>
+                <p class="w3-opacity">Developer</p>
+                <!--<p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>-->
+                <p><a href="https://www.linkedin.com/in/sergi-sim%C3%B3n-balcells-964b28195/"class="w3-button w3-grey w3-block" style="background-color: #8EE3B6 !important;">Contact</a></p>
+            </div>
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <img src="{% static 'img/ian.png' size=100%}" alt="Dan" style="width:100%">
+                <h3>Ian Palacín</h3>
+                <p class="w3-opacity">Developer</p>
+                <!--<p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>-->
+                <p><a href="https://www.linkedin.com/in/ian-palac%C3%ADn-aliana-99897518a/"class="w3-button w3-grey w3-block" style="background-color: #8EE3B6 !important;">Contact</a></p>
+            </div>
+            </div>
     {% endif %}
 {% endblock content %}

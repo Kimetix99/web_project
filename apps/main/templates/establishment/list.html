@@ -12,8 +12,7 @@
         <div class="card-body">
           <h5 class="card-title" name="list_element">{{ establishment.name }}</h5>
           <p class="card-text">{{establishment.address}}</p>
-          {% comment %}<a href="{% url establishment_detail establishment.pk %}" class="btn btn-primary">View details</a>{% endcomment %}
-          <a href="#" class="btn btn-primary">View details</a>
+          <a href="{% url "establishment_detail" establishment.pk %}" class="btn btn-dark">View details</a>
         </div>
       </div>
     </div>
