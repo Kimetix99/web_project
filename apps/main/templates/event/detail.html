@@ -1,0 +1,84 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}Event detail - {{ object.name }}{% endblock title %}
+{% block content %}
+    <div class="col-xs-3">
+        &nbsp;
+    </div>
+    <div class="col-xs-12" align="center">
+      <h1><i class="fas fa-calendar-week"></i> <span name="name">{{ object.name }}</span></h1>
+    </div>
+    <div class="imgbox">
+      {% if establishment.image %}
+      <img class="center-fit" src="{{ establishment.image.url }}" alt="{{ object.name }}">
+      {% else %}
+      <img class="center-fit" src="{% static 'img/esdeveniment.jpg' %}" alt="{{ object.name }}">
+      {% endif %}
+    </div> 
+    <div class="col-xs-12" align="center" style="background-color: #8EE3B6;">
+        <h1 name="name"><i class="fas fa-info-circle"></i> Information:</h1>
+    </div>
+    <div class="row" style="font-size: 20px;">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <h3><strong>State:</strong></h3> 
+            <input id = "SR" type="checkbox" disabled>
+            <label> Searching</label><br>
+            <input id ="CL" type="checkbox" disabled>
+            <label>Closed</label><br>
+            <input id ="FN" type="checkbox" disabled>
+            <label>Finished</label><br><br>
+        </div>
+        <script>
+            document.getElementById("{{ object.state }}").checked = true;
+        </script>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <h3><strong>Date:</strong></h3> 
+            <p name="date">{{object.date|date}}</p>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <h3><strong>Establishment name:</strong></h3> 
+            <a style="color:blue;" href="{% url "establishment_detail" establishment.pk %}"><p name="establishment">{{establishment.name}}</p></a>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <h3><strong>Event Place:</strong></h3> 
+            <p name="establishment">{{establishment.address}}</p> 
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <h3><strong>Description:</strong></h3>  
+            <p name="description">{{object.description}}</p> 
+        </div>
+    </div>
+    <div class="col-xs-12" align="center" style="background-color: #8EE3B6;">
+        <h1 name="name"><i class="fas fa-record-vinyl"></i> Bands:</h1>
+    </div>
+    <div class="row" style="font-size: 20px;">
+        {% for band in object.band.all %}
+        <div class="col-xs-1">&nbsp;</div>
+            <div class="card" style="width: 23rem; background-color: #8EE3B6;">
+            {% if establishment.image %}
+            <img class="card-img-top" src="{{ band.image.url }}" alt="{{ band.name }}">
+            {% else %}
+            <img class="card-img-top" src="{% static 'img/band.jpg' %}" alt="{{ band.name }}">
+            {% endif %}
+            <div class="card-body">
+              <h4 class="card-title">{{band.name}}</h4>
+              <a href="{% url "band_detail" band.pk %}" class="btn btn-dark"><i class="fas fa-eye"></i> See more</a>
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+    {% if user.is_authenticated %}
+        {% if user == object.establishment.user %}
+            <div class="row" style="padding-top: 20px">
+                <button name="edit" class="btn btn-dark" onclick="location.href='{% url "event_edit" event.pk %}'"><i class="fas fa-edit"></i> Edit Event</button>
+                <!--<a href="{% url "event_edit" event.pk %}" class="btn btn-dark" name="edit"><i class="fas fa-edit"></i> Edit Event</a>-->
+                <div class="col-xs-1">&nbsp;</div>
+                <a href="{% url "event_delete" event.pk %}" class="btn btn-danger" name="delete"><i class="fas fa-trash"></i> Delete Event</a>
+            </div>
+        {% endif %}
+    {% endif %}
+    <div class="col-xs-3">
+        &nbsp;
+    </div>
+{% endblock content %}
+

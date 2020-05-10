@@ -1,18 +1,19 @@
 Feature: Create Establishment
   In order to create establishment
   As a user
-  I want to create an establishment along with the name, address, contact_email, contact_mobile, image, and
-    owner must be set to me
+  I want to create an establishment along with the name, address, email, mobile, image, and
+    owner must be set to be me
 
     Background: There is a registrated user
-      Given Exists a user "user" with password "password"
+      Given Exists user "user" with password "password"
 
-    Scenario: Create a Establishment with a name, address, contact_email, contact_mobile, image
-      Given I login as user "user" with password "password"
-      When I create a establishment
-        | name        | address       | mobile     | image     | user      |
-        | Tremola     | C.Major n 9   | 100000001  |           | Tremola   |
-      Then I'm viewing the details page for establishment by "user"
-        | name        | address       | mobile     | image     | user      |
-        | Tremola     | C.Major n 9   | 100000001  |           | Tremola   |
-      And There are 1 establishment
+    Scenario: Create a Establishment with a name, address, email, mobile, image
+      Given I'm logged as user "user" with password "password"
+      When I try to establish an establishment
+      And I fill the form with
+        | name     | address     | email                 | mobile    | submit_name         |
+        | Tremola  | C.Major n 9 | tremola@gmail.com    | 100000001 | establishmentsubmit  | 
+      Then I view all of the establishment information. 
+        | name     | address     | mail                 | mobile    | user        |
+        | Tremola  | C.Major n 9 | tremola@gmail.com    | 100000001 | user        |
+      And There are 1 establishments

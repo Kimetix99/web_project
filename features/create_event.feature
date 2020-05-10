@@ -5,15 +5,21 @@ Feature: Create Event
     establishment set as the owner.
 
   Background: There are registered user, an establishment created by one of them, and there is also a band created by one of them.
-    Given There is an establishment
-
-  Scenario: Create a Band with a name, band list, state, date, description
+    Given There are Establishments
       | user        | password | name     | address     | mail                 | mobile    |
       | Tremola     | patata   | Tremola  | C.Major n 9 | tremola@gmail.com    | 100000001 |
-    And There is a band
-      | user          | password | web_link                             | playlist                                    | mail                 | mobile    | name      |
-      | Skeewiff      | patata   | https://soundcloud.com/skeewiff      |  https://soundcloud.com/dj-elye/sets/jazz   | skeewiff@gmail.com   | 100000001 | skeewiff  |
-    When I create a event
-      |  name            |  band                 |  state  |  date  |  description  |  establishment  |
-      |  Acampada Jove   |  skeewiff@gmail.com   |  SR     |  1     |  Large descr  |  Tremola        |
-    Then I'm viewing the details page for event by "user"
+    And There are bands
+      | user          | password | web_link                             | playlist                                                        | mail                 | mobile    | name      |
+      | Skeewiff      | patata   | https://soundcloud.com/skeewiff      |  https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0   | skeewiff@gmail.com   | 100000001 | skeewiff  |
+
+
+  Scenario: 
+    Given I'm logged as user "Tremola" with password "patata"
+    When I try to create an event
+    And I fill the form with
+      |  name            |  state          |  date      |  description  | submit_name  |
+      |  Acampada Jove   |  Searching      |  1/2/2021  |  Large descr  | eventsubmit  | 
+    Then I view all of the event information. 
+      |  name            |  state  |  date            |  description  |  establishment  |
+      |  Acampada Jove   |  SR     |  Jan, 2 2021     |  Large descr  |  Tremola        |
+

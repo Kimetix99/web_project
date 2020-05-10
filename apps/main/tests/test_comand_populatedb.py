@@ -21,7 +21,6 @@ class PopulatedbTest(TestCase):
         self.out = StringIO()
         call_command('populatedb', stdout=self.out)
 
-
     def test_command_output(self):
         """
         Tests the command output with assertIn and assertNotIn

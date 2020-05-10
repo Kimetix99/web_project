@@ -11,11 +11,13 @@ Models of the web app:
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.utils.functional import cached_property
 
 # Create your models here.
 
 
 class Band(models.Model):
+    name = models.CharField('Name of the band', max_length=255)
     web_link = models.URLField('Web Link to Portfolio', max_length=255)
     playlist = models.URLField('SoundCloud Playlist', max_length=300)
     email = models.CharField('A contact email', max_length=100)
@@ -47,15 +49,20 @@ class Event(models.Model):
     date = models.DateTimeField('Date of the event', null=False)
     description = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, related_name='events')
-
     class Meta:
         permissions = [
                 ('event_owner', 'User owner of the establishment owner of the Event'),
                 ]  # Bands will contact privately to the owner, so it's not needed
 
     def __str__(self):
-        return f'Event(pk={self.pk}, name={self.name}, state={self.state}, date={self.date}, user={self.user.username})'
+        return f'Event(pk={self.pk}, name={self.name}, state={self.state}, date={self.date}, establishment={self.establishment.name})'
 
+    def get_absolute_url(self):
+        return reverse('event_detail', kwargs={'pk':self.pk})
+
+    @cached_property
+    def establishment(self):
+        return Establishment.objects.filter(user=self.user).first()
 
 class Establishment(models.Model):
     name = models.CharField('Establishment name', max_length=300, blank=True)
@@ -72,4 +79,5 @@ class Establishment(models.Model):
     def __str__(self):
         return f'Establishment(pk={self.pk}, name={self.name}, address={self.address}, user={self.user.username})'
 
-
+    def get_absolute_url(self):
+        return reverse('establishment_detail', kwargs={'pk':self.pk})
