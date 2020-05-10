@@ -62,9 +62,9 @@
     {% if user.is_authenticated %}
         {% if user == object.establishment.user %}
             <div class="row" style="padding-top: 20px">
-                <a href="{% url "event_edit" event.pk %}" class="btn btn-dark"><i class="fas fa-edit"></i> Edit Event</a>
+                <a href="{% url "event_edit" event.pk %}" class="btn btn-dark" name="edit"><i class="fas fa-edit"></i> Edit Event</a>
                 <div class="col-xs-1">&nbsp;</div>
-                <a href="{% url "event_delete" event.pk %}" class="btn btn-danger"><i class="fas fa-trash"></i> Delete Event</a>
+                <a href="{% url "event_delete" event.pk %}" class="btn btn-danger" name="delete"><i class="fas fa-trash"></i> Delete Event</a>
             </div>
         {% endif %}
     {% endif %}

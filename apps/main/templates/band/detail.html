@@ -44,9 +44,9 @@
   {% if user.is_authenticated %}
     {% if user == object.user %}
       <div class="row" style="padding-top: 20px">
-        <a href="{% url "band_edit" band.pk %}" class="btn btn-dark"><i class="fas fa-edit"></i> Edit Band</a>
+        <a href="{% url "band_edit" band.pk %}" class="btn btn-dark" name="edit"><i class="fas fa-edit"></i> Edit Band</a>
         <div class="col-xs-1">&nbsp;</div>
-        <a href="{% url "band_delete" band.pk %}" class="btn btn-danger"><i class="fas fa-trash"></i> Delete Band</a>
+        <a href="{% url "band_delete" band.pk %}" class="btn btn-danger" name="delete"><i class="fas fa-trash"></i> Delete Band</a>
       </div>
     {% endif %}
   {% endif %}
