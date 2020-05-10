@@ -9,11 +9,7 @@
       <h1 name="name"><i class="fas fa-record-vinyl"></i> {{ object.name }}</h1>
     </div>
     <div class="imgbox">
-      {% if object.image %}
-      <img class="center-fit" src="{{ object.image.url }}" alt="{{ object.name }}">
-      {% else %}
-      <img class="center-fit" src="{% static 'img/band.jpg' %}" alt="{{ object.name }}">
-      {% endif %}
+      <img class="center-fit" src="{% static 'img/back.png' size=100%}" alt="Architecture">
     </div>
     <div class="col-xs-12" align="center" style="background-color: #8EE3B6;">
       <h1 name="name"><i class="fas fa-info-circle"></i> Information:</h1>
@@ -57,7 +53,7 @@
   {% if user.is_authenticated %}
     {% if user == object.user %}
       <div class="row" style="padding-top: 20px">
-        <button name="edit" class="btn btn-dark" onclick="location.href='{% url "band_edit" band.pk %}'"><i class="fas fa-edit"></i> Edit Band</button>
+        <a href="{% url "band_edit" band.pk %}" class="btn btn-dark" name="edit"><i class="fas fa-edit"></i> Edit Band</a>
         <div class="col-xs-1">&nbsp;</div>
         <a href="{% url "band_delete" band.pk %}" class="btn btn-danger" name="delete"><i class="fas fa-trash"></i> Delete Band</a>
       </div>
