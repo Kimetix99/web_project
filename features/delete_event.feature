@@ -15,7 +15,7 @@ Feature: Delete an event
       | Drei-jazz     | patata   | https://soundcloud.com/drei-jazz     |  https://soundcloud.com/dj-elye/sets/jazz   | drei-jazz@gmail.com  | 200000002 | drei-jazz    |
       | Tessatiorina  | dracs    | https://soundcloud.com/tessatioarina |  https://soundcloud.com/dj-elye/sets/jazz   | tessatio@gmail.com   | 300000003 | tessatio     |
     And There are events
-      |  name            |  band                 |  state  |  date  |  description  |  establishment  |
+      |  name            |  band                 |  state  |  date  |  description  |  user           |
       |  Acampada Jove   |  skeewiff@gmail.com   |  CL     |  1     |  Large descr  |  Pecadets       |
       |  Festiuet        |  drei-jazz@gmail.com  |  FN     |  -1    |  Medium desc  |  Atope          |
       |  PrimaveraSound  |  tessatio@gmail.com   |  SR     |  4     |  Short descr  |  Tremola        |

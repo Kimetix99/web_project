@@ -16,8 +16,7 @@ class EditEventTest(TestCase):
         date1 = timezone.now() + timezone.timedelta(days=4)
         est1 = Establishment.objects.create(name="Bar Pac1", address="C/Major n9", email="paco96@gmail.com",
                                             mobile="000000000", user=user1)
-        self.ev1 = Event.objects.create(name='Primavera Sound', state='SR', date=date1, description="Short Description",
-                         establishment=est1)
+        self.ev1 = Event.objects.create(name='Primavera Sound', state='SR', date=date1, description="Short Description", user=user1)
 
     def test_event_edit_template(self):
         self.client.login(username='user', password='testpass123')

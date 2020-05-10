@@ -17,7 +17,7 @@ def step_impl(context):
     email = context.browser.find_by_name('email')
     mobile = context.browser.find_by_name('mobile')
     for i, row in enumerate(context.table):
-        assert row['name'] == name[i].text
+        assert row['name'] in name[i].text, f'name={row["name"]}, text={name[i].text}'
         assert row['web_link'] == web_link[i].text
         assert row['mail'] == email[i].text
         assert row['mobile'] == mobile[i].text

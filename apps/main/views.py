@@ -1,12 +1,8 @@
 from django.shortcuts import render
 from .models import Event, Establishment, Band
-from django.views.generic import CreateView, DetailView, ListView, DeleteView
+from django.views.generic import CreateView, DetailView, ListView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, DetailView, ListView, UpdateView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse, reverse_lazy
-
 
 def home(request):
     return render(request, 'home.html', {})
@@ -26,7 +22,7 @@ def sign_up(request):
 
 class CreateBandView(LoginRequiredMixin, CreateView):
     model = Band
-    fields = ['web_link', 'playlist',
+    fields = ['name', 'web_link', 'playlist',
               'email', 'mobile', 'image']
     template_name = 'band/create.html'
 
@@ -82,13 +78,19 @@ class EstablishmentDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         establishment = self.model.objects.get(pk=self.kwargs["pk"])
-        events = Event.objects.filter(establishment=establishment).order_by('-date')
+        events = Event.objects.filter(user=establishment.user).order_by('-date')
         context["list_events"]=events
         return context
 
 class EventDetail(DetailView):
     model = Event
     template_name = 'event/detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        est = Establishment.objects.get(user=self.object.user)
+        context['establishment'] = est
+        return context
 
 
 class ListEstablishment(ListView):
@@ -119,8 +121,8 @@ class DeleteEvent(UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         event = Event.objects.filter(pk=self.kwargs['pk']).first()
-        return event != None and \
-               self.request.user.pk == event.establishment.user.pk
+        return event != None and\
+                self.request.user.pk == event.user.pk
 
 
 class DeleteBand(UserPassesTestMixin, DeleteView):
@@ -143,7 +145,7 @@ class EditEventView(UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         event = Event.objects.filter(pk=self.kwargs['pk']).first()
-        return event != None and self.request.user.pk == event.establishment.user.pk
+        return event != None and self.request.user.pk == event.user.pk
 
 
 class DeleteEstablishment(UserPassesTestMixin, DeleteView):
@@ -153,5 +155,50 @@ class DeleteEstablishment(UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         establishment = Establishment.objects.filter(pk=self.kwargs['pk']).first()
+        if establishment != None and \
+                self.request.user.pk == establishment.user.pk:
+            remove_events(self.request.user)
+            return True
+    
+def remove_events(user):
+    events = Event.objects.filter(user=user)
+    for event in events:
+        event.delete()
+
         return establishment != None and \
                self.request.user.pk == establishment.user.pk
+
+
+class CreateEstablishmentView(LoginRequiredMixin, CreateView):
+    model = Establishment
+    fields = ['name', 'address', 'email', 'mobile', 'image']
+    template_name = 'establishment/create.html'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(CreateEstablishmentView, self).form_valid(form)
+
+    def get_success_url(self):
+        # Overrided method
+        return reverse('establishment_detail', kwargs={'pk': self.object.pk})
+
+
+class CreateEventView(UserPassesTestMixin, CreateView):
+    model = Event
+    fields = ['name', 'band', 'state', 'date', 'description']
+    template_name = 'event/create.html'
+
+    def test_func(self):
+        return self.request.user.is_authenticated and Establishment.objects.filter(user=self.request.user).first() != None
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(CreateEventView, self).form_valid(form)
+
+    def get_success_url(self):
+        # Overrided method
+        return reverse('event_detail', kwargs={'pk': self.object.pk})
+
+
+
+ 

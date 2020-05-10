@@ -13,3 +13,6 @@ def has_from_model(model, **kwargs):
     kwargs = kwargs['kwargs']
     return model.objects.filter(**kwargs).first() != None
 
+def from_row_to_dict(row):
+    return {h:row[h] for h in row.headings}
+

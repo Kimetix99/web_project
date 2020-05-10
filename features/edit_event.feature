@@ -11,18 +11,18 @@ Feature: Edit an event
       | user          | password | web_link                             | playlist                                    | mail                 | mobile    | name      |
       | Skeewiff      | patata   | https://soundcloud.com/skeewiff      |  https://soundcloud.com/dj-elye/sets/jazz   | skeewiff@gmail.com   | 100000001 | skeewiff  |
     And There are events
-      |  name            |  band                 |  state  |  date  |  description  |  establishment  |
-      |  Acampada Jove   |  skeewiff@gmail.com   |  SR     |  1     |  Large descr  |  Tremola        |
+      |  name            |  band                 |  state  |  date  |  description  |  user     |
+      |  Acampada Jove   |  skeewiff@gmail.com   |  SR     |  1     |  Large descr  |  Tremola  |
     And Exists user "user2" with password "password"
 
   Scenario: Edit owned event
     Given I'm logged as user "Tremola" with password "patata"
     When I visit the event with name "Acampada Jove"
     And I click button named "edit"
-    And I fill camp "{state}" with value "{closed}"
+    And I fill camp "description" with value "small descr"
     Then I view all of the event information. 
-      |  name                    |  band                 |  state  |  date  |  description  |  establishment  |
-      |  Event : Acampada Jove   |  skeewiff@gmail.com   |  CL     |  1     |  Large descr  |  Pecadets       |
+      |  name            |  band                 |  state  |  date  |  description  |  establishment  |
+      |  Acampada Jove   |  skeewiff@gmail.com   |  SR     |  1     |  small descr  |  Pecadets       |
     And There are 1 events
 
   Scenario: Try to edit event but not logged in

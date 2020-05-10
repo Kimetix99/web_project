@@ -11,7 +11,7 @@ class DeleteEventTest(TestCase):
         user5 = get_user_model().objects.create_user(username="paquito", password="testingpaco123", email="paco@gmail.com", first_name="Paco", last_name="Rodriguez")
         date1 = timezone.now() + timezone.timedelta(days=4)
         est1 = Establishment.objects.create(name="Bar Pac1", address="C/Major n9", email="paco96@gmail.com", mobile="000000000", user=user5)
-        self.ev1 = Event.objects.create(name='Primavera Sound', state='SR', date=date1, description="Short Description", establishment=est1)
+        self.ev1 = Event.objects.create(name='Primavera Sound', state='SR', date=date1, description="Short Description", user=user5)
         get_user_model().objects.create_user(username='user', password='testpass123')
 
     def test_event_delete_template_user_no_match(self):
