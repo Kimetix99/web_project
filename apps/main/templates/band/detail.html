@@ -9,7 +9,11 @@
       <h1><i class="fas fa-record-vinyl"></i> <span name="name">{{ object.name }}</span></h1>
     </div>
     <div class="imgbox">
+      {% if band.image %}
+      <img class="center-fit" src="{{ object.image.url }}" alt="Architecture">
+      {% else %}
       <img class="center-fit" src="{% static 'img/back.png' size=100%}" alt="Architecture">
+      {% endif %}
     </div>
     <div class="col-xs-12" align="center" style="background-color: #8EE3B6;">
       <h1 name="name"><i class="fas fa-info-circle"></i> Information:</h1>
@@ -42,7 +46,11 @@
       {% for event in list_events %}
       <div class="col-xs-1">&nbsp;</div>
       <div class="card" style="width: 23rem; background-color: #8EE3B6;">
-          <img class="card-img-top" src="{% static 'img/band.jpg' %}" alt="Card image cap">
+         {% if event.establishment.image %}
+            <img src="{{ event.establishment.image.url }}" class="card-img-top" alt="{{ event.name }}">
+          {% else %}
+            <img class="card-img-top" src="{% static 'img/band.jpg' %}" alt="Card image cap">
+          {% endif %}
           <div class="card-body">
             <h4 class="card-title">{{event.name}}</h4>
             <a href="{% url "event_detail" event.pk %}" class="btn btn-dark"><i class="fas fa-eye"></i> See more</a>
