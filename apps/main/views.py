@@ -40,11 +40,13 @@ class EditBandView(UserPassesTestMixin, UpdateView):
     fields = ['name', 'web_link', 'playlist',
               'email', 'mobile', 'image']
     template_name = 'band/edit.html'
-    success_url = reverse_lazy('home')
 
     def test_func(self):
         band = Band.objects.filter(pk=self.kwargs['pk']).first()
         return band != None and self.request.user.pk == band.user.pk
+
+    def get_success_url(self):
+        return self.object.get_absolute_url()
 
 
 class BandDetail(DetailView):
@@ -64,11 +66,12 @@ class EditEstablishmentView(UserPassesTestMixin, UpdateView):
               'email', 'mobile', 'image']
     template_name = 'establishment/edit.html'
 
-    success_url = reverse_lazy('home')
-
     def test_func(self):
         establishment = Establishment.objects.filter(pk=self.kwargs['pk']).first()
         return establishment != None and self.request.user.pk == establishment.user.pk
+
+    def get_success_url(self):
+        return self.object.get_absolute_url()
 
 
 class EstablishmentDetail(DetailView):
@@ -141,11 +144,12 @@ class EditEventView(UserPassesTestMixin, UpdateView):
               'state', 'date', 'description']
     template_name = 'event/edit.html'
 
-    success_url = reverse_lazy('home')
-
     def test_func(self):
         event = Event.objects.filter(pk=self.kwargs['pk']).first()
         return event != None and self.request.user.pk == event.user.pk
+
+    def get_success_url(self):
+        return self.object.get_absolute_url()
 
 
 class DeleteEstablishment(UserPassesTestMixin, DeleteView):

@@ -13,10 +13,11 @@ Feature: Edit a band
     Given I'm logged as user "user1" with password "password"
     When I visit the band with name "itaca band"
     And I click button named "edit"
-    And I fill camp "email" with value "b@b.com"
+    And I fill camp "name" with value "itraca band"
+    And I click button named "bandeditsubmit"
     Then I view all of the band information. 
-      | name        | web_link                             | playlist                                    | mail     | mobile    |
-      | itaca band  | https://soundcloud.com/skeewiff      |  https://soundcloud.com/dj-elye/sets/jazz   | b@b.com  | 100000001 |
+      | name         | web_link                             | playlist                                    | mail               | mobile    |
+      | itraca band  | https://soundcloud.com/skeewiff      |  https://soundcloud.com/dj-elye/sets/jazz   | tremola@gmail.com  | 100000001 |
     And There are 1 bands
 
   Scenario: Try to edit band but not logged in

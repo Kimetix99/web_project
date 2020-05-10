@@ -19,10 +19,11 @@ Feature: Edit an event
     Given I'm logged as user "Tremola" with password "patata"
     When I visit the event with name "Acampada Jove"
     And I click button named "edit"
-    And I fill camp "description" with value "small descr"
+    And I fill camp "name" with value "Retocada Jove"
+    And I click button named "eventeditsubmit"
     Then I view all of the event information. 
       |  name            |  band                 |  state  |  date  |  description  |  establishment  |
-      |  Acampada Jove   |  skeewiff@gmail.com   |  SR     |  1     |  small descr  |  Pecadets       |
+      |  Retocada Jove   |  skeewiff@gmail.com   |  SR     |  1     |  Large descr  |  Tremola        |
     And There are 1 events
 
   Scenario: Try to edit event but not logged in
