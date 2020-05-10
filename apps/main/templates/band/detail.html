@@ -9,7 +9,11 @@
       <h1 name="name"><i class="fas fa-record-vinyl"></i> {{ object.name }}</h1>
     </div>
     <div class="imgbox">
+      {% if object.image %}
       <img class="center-fit" src="{{ object.image.url }}" alt="{{ object.name }}">
+      {% else %}
+      <img class="center-fit" src="{% static 'img/band.jpg' %}" alt="{{ object.name }}">
+      {% endif %}
     </div>
     <div class="col-xs-12" align="center" style="background-color: #8EE3B6;">
       <h1 name="name"><i class="fas fa-info-circle"></i> Information:</h1>
