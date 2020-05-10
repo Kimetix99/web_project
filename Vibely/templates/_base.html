@@ -32,12 +32,12 @@
               <a class="nav-link" href="{% url 'search' %}"><i class="fas fa-search"></i> Search <span class="sr-only">(current)</span></a>
             </li>
             {% if user.is_authenticated %}
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url '' %}"><i class="fas fa-search"></i> My bands <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'search' %}"><i class="fas fa-search"></i> My establishment <span class="sr-only">(current)</span></a>
-            </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'mybands' %}"><i class="fas fa-guitar"></i></i> My bands<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'myestablishment' %}"><i class="fas fa-map-marked-alt"></i> My establishment<span class="sr-only">(current)</span></a>
+              </li>
             {% endif %}
           </ul>
           <div class="my-2 my-lg-0">
