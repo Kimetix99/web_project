@@ -13,4 +13,5 @@ def step_impl(context, num):
 def step_impl(context, name):
     from apps.main.models import Establishment
     est = Establishment.objects.get(name=name)
-    context.browser.visit(f'establishment/edit/{est.pk}/')
+    context.browser.visit(
+            context.get_url(f'/establishment/edit/{est.pk}/'))

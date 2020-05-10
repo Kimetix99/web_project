@@ -14,8 +14,8 @@ Feature: Create Band
       | web_link           |  playlist                                                    |  email   | mobile | name        |  submit_name |
       | https://google.com | https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0 | a@a.com  | 123780 | itaca band  |  bandsubmit  | 
     Then I view all of the band information. 
-      | name        | web_link                             | mail                 | mobile    |
-      | itaca band  | https://soundcloud.com/skeewiff      | tremola@gmail.com    | 100000001 |
+      | name        | web_link                | mail                 | mobile    |
+      | itaca band  | https://google.com      | tremola@gmail.com    | 100000001 |
 
   Scenario:
     When I try to establish a band
