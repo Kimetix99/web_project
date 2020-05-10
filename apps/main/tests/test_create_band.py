@@ -12,6 +12,8 @@ class CreateBandTest(TestCase):
         self.client.login(username='user', password='testpass123')
         self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 200)
+        self.assertTemplateUsed(self.response, 'band/create.html')
+        self.assertTemplateUsed(self.response, '_base.html')
 
     def test_not_login(self):
         self.response = self.client.get(self.url)
