@@ -29,9 +29,10 @@ Feature: Edit a Establishement
     When I visit the establishment with name "Tremola"
     Then There is no name "edit"
 
-  Scenario: Force edit establishment but not the owner permission exception
-    Given I'm logged as user "user2" with password "password"
-    When I try to visit edit page of establishment "Tremola"
-    Then Title is "403 Forbidden"
+  #Scenario: Force edit establishment but not the owner permission exception
+    #Given I'm logged as user "user2" with password "password"
+    #When I try to visit edit page of establishment "Tremola"
+    #Then Title is "403 Forbidden"
     #Then Server responds with page containing 403
+    # See edit_band.feature to know the reasons for the comment
 
