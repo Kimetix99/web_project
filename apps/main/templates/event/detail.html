@@ -9,7 +9,7 @@
         <h1 name="name"><i class="fas fa-calendar-week"></i> {{ object.name }}</h1>
     </div>
     <div class="imgbox">
-        <img class="center-fit" src="{% static 'img/esdeveniment.jpg' size=100%}" alt="Architecture">
+      <img class="center-fit" src="{{ establishment.image }}" alt="{{ object.name }}">
     </div> 
     <div class="col-xs-12" align="center" style="background-color: #8EE3B6;">
         <h1 name="name"><i class="fas fa-info-circle"></i> Information:</h1>

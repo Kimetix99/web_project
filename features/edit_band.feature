@@ -15,8 +15,8 @@ Feature: Edit a band
     And I click button named "edit"
     And I fill camp "email" with value "b@b.com"
     Then I view all of the band information. 
-      | name               | web_link                             | playlist                                    | mail     | mobile    |
-      | Band : itaca band  | https://soundcloud.com/skeewiff      |  https://soundcloud.com/dj-elye/sets/jazz   | b@b.com  | 100000001 |
+      | name        | web_link                             | playlist                                    | mail     | mobile    |
+      | itaca band  | https://soundcloud.com/skeewiff      |  https://soundcloud.com/dj-elye/sets/jazz   | b@b.com  | 100000001 |
     And There are 1 bands
 
   Scenario: Try to edit band but not logged in
