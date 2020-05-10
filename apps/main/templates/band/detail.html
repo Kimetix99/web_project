@@ -9,11 +9,7 @@
       <h1 name="name"><i class="fas fa-record-vinyl"></i> {{ object.name }}</h1>
     </div>
     <div class="imgbox">
-      {% if object.image %}
-      <img class="center-fit" src="{{ object.image.url }}" alt="{{ object.name }}">
-      {% else %}
-      <img class="center-fit" src="{% static 'img/band.jpg' %}" alt="{{ object.name }}">
-      {% endif %}
+      <img class="center-fit" src="{% static 'img/back.png' size=100%}" alt="Architecture">
     </div>
     <div class="col-xs-12" align="center" style="background-color: #8EE3B6;">
       <h1 name="name"><i class="fas fa-info-circle"></i> Information:</h1>
@@ -25,7 +21,7 @@
       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="font-size: 20px;">
         <div class="col-xs-12" style="padding-top: 40px;">
           <div class="col-xs-12">
-            <h3><strong>Web Link:</strong> </h3>
+            <h3><strong>Band Web:</strong> </h3>
             <p><a name="web_link" href="{{object.web_link}}">{{object.web_link}}</a></p>
           </div>
           <div class="col-xs-12">
