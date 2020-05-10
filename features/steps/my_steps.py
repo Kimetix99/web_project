@@ -21,8 +21,8 @@ def step_impl(context):
 
 @when(u'I list my bands')
 def step_impl(context):
-    raise NotImplementedError('Needs the web!')
+    context.browser.visit(context.get_url('mybands'))
 
 @when(u'I get my establishment')
 def step_impl(context):
-    raise NotImplementedError('Needs the web!')
+    context.browser.visit(context.get_url('myestablishment'))

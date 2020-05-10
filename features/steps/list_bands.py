@@ -31,9 +31,9 @@ def step_impl(context):
     mails = context.browser.find_by_name('list_mail')
     mobiles = context.browser.find_by_name('list_mobile')
     for i, row in enumerate(context.table):
-        assert row['name'] == name[i].text
-        assert row['mail'] == mails[i].text
-        assert row['mobile'] == mobiles[i].text
+        assert row['name'] == name[i].text, f'{row["name"]} == {name[i].text}'
+        assert row['mail'] == mails[i].text, f'{row["mail"]} == {mails[i].text}'
+        assert row['mobile'] == mobiles[i].text, f'{row["mobile"]} == {mobiles[i].text}'
 
 @then(u'The list contains {count:n} bands')
 def step_impl(context, count):
