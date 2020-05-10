@@ -170,8 +170,12 @@ class DeleteEstablishment(UserPassesTestMixin, DeleteView):
         establishment = Establishment.objects.filter(pk=self.kwargs['pk']).first()
         if establishment != None and \
                 self.request.user.pk == establishment.user.pk:
-            remove_events(self.request.user)
             return True
+        return False
+    
+    def delete(self, request, *args, **kwargs):
+        remove_events(request.user)
+        return super().delete(request, *args, **kwargs)
     
 def remove_events(user):
     events = Event.objects.filter(user=user)
