@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Event, Establishment, Band
 from django.views.generic import CreateView, DetailView, ListView, DeleteView, UpdateView
+from django.views.generic.base import RedirectView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse, reverse_lazy
 
@@ -108,6 +109,14 @@ class ListBand(ListView):
     context_object_name = 'band_list'
 
 
+class ListMyBands(LoginRequiredMixin, ListView):
+    model = Band
+    template_name='band/list.html'
+    context_object_name = 'band_list'
+
+    def get_queryset(self):
+        return Band.objects.filter(user=self.request.user)
+
 class ListEvent(ListView):
     model = Event
     template_name = 'event/list.html'
@@ -203,6 +212,9 @@ class CreateEventView(UserPassesTestMixin, CreateView):
         # Overrided method
         return reverse('event_detail', kwargs={'pk': self.object.pk})
 
+class MyEstablishmentRedirectView(LoginRequiredMixin, RedirectView):
 
+    def get_redirect_url(self, *args, **kwargs):
+        est = Establishment.objects.filter(user=self.request.user).first()
+        return est.get_absolute_url() if est else reverse('establishment_create')
 
- 

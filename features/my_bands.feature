@@ -15,7 +15,7 @@ Feature: List all of my bands
       | Tremola     | amics de les arts   | https://soundcloud.com/drei-jazz     |  https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0   | adla@gmail.com         | 200000002 |
 
   Scenario: List my bands
-    Given I'm logged as user Tremola and password patata
+    Given I'm logged as user "Tremola" and password "patata"
     When I list my bands
     Then I'm viewing a list containing some of the bands
       | name                | mail                  | mobile    |
