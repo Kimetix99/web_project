@@ -19,7 +19,7 @@ from django.utils.functional import cached_property
 class Band(models.Model):
     name = models.CharField('Name of the band', max_length=255)
     web_link = models.URLField('Web Link to Portfolio', max_length=255)
-    playlist = models.URLField('SoundCloud Playlist', max_length=300)
+    playlist = models.URLField('Spotify link', max_length=300)
     email = models.CharField('A contact email', max_length=100)
     mobile = models.CharField('A mobile phone to contact you', max_length=16)
     image = models.ImageField('An image of the band', upload_to='img/', blank=True)

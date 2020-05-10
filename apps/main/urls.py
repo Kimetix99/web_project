@@ -32,4 +32,8 @@ urlpatterns = [
          name='band_delete'),
     path('establishment/delete/<int:pk>',
          views.DeleteEstablishment.as_view(), name='establishment_delete'),
+    path('myestablishment/', views.MyEstablishmentRedirectView.as_view(), 
+        name='myestablishment'),
+    path('mybands', views.ListMyBands.as_view(), 
+        name='mybands'),
 ]
