@@ -1,4 +1,5 @@
 {% extends '_base.html' %}
+{% load static %}
 
 {% block title %}Vibely - List establishments{% endblock title %}
 {% block content %}
@@ -8,6 +9,8 @@
       <div class="card">
         {% if establishment.image %}
         <img src="{{ establishment.image.url }}" class="card-img-top" alt="{{ establishment.name }}">
+        {% else %}
+        <img src="{% static 'img/establishment.jpg'%}" class="card-img-top" alt="{{ establishment.name }}">
         {% endif %}
         <div class="card-body">
           <h5 class="card-title" name="list_element">{{ establishment.name }}</h5>
