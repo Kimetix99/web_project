@@ -11,9 +11,8 @@ Feature: List all the establishments
       | Pecadets    | dracs    | Pecadets | C.Majo n 11 | pecadets@gmail.com   | 300000003 |
   
   Scenario: List them all
-    Given I'm logged as user Tremola and password patata
-    When I list establishments
-    Then I'm viewing a list containing some of the establishments
-      | name     | address     |
-      | Tremola  | C.Major n 9 |
-    And The list contains 1 establishments
+    Given I'm logged as user "Tremola" and password "patata"
+    When I get my establishment
+    Then I view all of the establishment information. 
+     | name     | address     | mail                 | mobile    | user        |
+     | Tremola  | C.Major n 9 | tremola@gmail.com    | 100000001 | Tremola     |
