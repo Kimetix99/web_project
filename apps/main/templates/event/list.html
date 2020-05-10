@@ -6,7 +6,10 @@
   {% for event in event_list %}
     <div class="col-lg-6 col-sm-12 p-3 p-5-md">
       <div class="card">
-          <div class="card-body">
+        {% if event.establishment.image %}
+          <img src="{{ event.establishment.image.url }}" class="card-img-top" alt="{{ event.name }}">
+        {% endif %}
+         <div class="card-body">
             <h5 class="card-title" name="list_name">{{ event.name }} - {{ event.get_state_display }}</h5>
           <p class="card-text" name="list_date">{{ event.date|date }}</p>
           <p class="card-text" name="list_description">{{ event.description }}</p>

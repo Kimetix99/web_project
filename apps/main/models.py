@@ -11,6 +11,7 @@ Models of the web app:
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.utils.functional import cached_property
 
 # Create your models here.
 
@@ -58,6 +59,10 @@ class Event(models.Model):
 
     def get_absolute_url(self):
         return reverse('event_detail', kwargs={'pk':self.pk})
+
+    @cached_property
+    def establishment(self):
+        return Establishment.objects.filter(user=self.user).first()
 
 class Establishment(models.Model):
     name = models.CharField('Establishment name', max_length=300, blank=True)
