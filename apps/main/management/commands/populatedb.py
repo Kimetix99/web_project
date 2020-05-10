@@ -32,10 +32,10 @@ class Command(BaseCommand):
         """
         Creates all bands
         """
-        band1 = Band.objects.create(name="itacaband", web_link='http://oquesgrasses.com/es/', playlist='https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0',      email="skeewiff@gmail.com", mobile="000000000", user=self.users[0])
-        band2 = Band.objects.create(name="metallica", web_link='http://oquesgrasses.com/es/', playlist='https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0', email="tessatioarina@gmail.com", mobile="100000000", user=self.users[1])
-        band3 = Band.objects.create(name="Maravillosa Orquesta del Alchol", web_link='http://oquesgrasses.com/es/', playlist='https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0',     email="tessatioarina@gmail.com", mobile="200000000", user=self.users[2])
-        band4 = Band.objects.create(name="Oques Grasses", web_link='http://oquesgrasses.com/es/', playlist='https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0',  email="angelo@gmail.com", mobile="300000000", user=self.users[3])
+        band1 = Band.objects.create(name="itacaband", web_link='http://oquesgrasses.com/es/', playlist='https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0',      email="skeewiff@gmail.com", mobile="000000000", user=self.users[0], image="/bands/itaca.jpeg")
+        band2 = Band.objects.create(name="metallica", web_link='http://oquesgrasses.com/es/', playlist='https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0', email="tessatioarina@gmail.com", mobile="100000000", user=self.users[1], image="/bands/metallica.jpeg" )
+        band3 = Band.objects.create(name="Maravillosa Orquesta del Alchol", web_link='http://oquesgrasses.com/es/', playlist='https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0',     email="tessatioarina@gmail.com", mobile="200000000", user=self.users[2] , image="/bands/orquesta.jpeg" )
+        band4 = Band.objects.create(name="Oques Grasses", web_link='http://oquesgrasses.com/es/', playlist='https://open.spotify.com/embed/artist/5qPeAT4ikl6gJNUexAOEy0',  email="angelo@gmail.com", mobile="300000000", user=self.users[3], image="/bands/oques.jpg" )
         self.bands = [band1, band2, band3, band4]
 
 
@@ -43,10 +43,10 @@ class Command(BaseCommand):
         """
         Creates all the establishments.
         """
-        est1 = Establishment.objects.create(name="Bar Pac1", address="C/Major n9", email="paco96@gmail.com", mobile="000000000", user=self.users[4])
-        est2 = Establishment.objects.create(name="Bar Pac2", address="C/Major n9", email="paco96@gmail.com", mobile="100000000", user=self.users[5])
-        est3 = Establishment.objects.create(name="Bar Pac3", address="C/Major n9", email="paco96@gmail.com", mobile="200000000", user=self.users[6])
-        est4 = Establishment.objects.create(name="Bar Pac4", address="C/Major n9", email="paco96@gmail.com", mobile="300000000", user=self.users[7])
+        est1 = Establishment.objects.create(name="Bar Pac1", address="C/Major n9", email="paco96@gmail.com", mobile="000000000", user=self.users[4], image="/establishments/e1.jpeg")
+        est2 = Establishment.objects.create(name="Bar Pac2", address="C/Major n9", email="paco96@gmail.com", mobile="100000000", user=self.users[5], image="/establishments/e2.jpeg")
+        est3 = Establishment.objects.create(name="Bar Pac3", address="C/Major n9", email="paco96@gmail.com", mobile="200000000", user=self.users[6], image="/establishments/e3.jpeg")
+        est4 = Establishment.objects.create(name="Bar Pac4", address="C/Major n9", email="paco96@gmail.com", mobile="300000000", user=self.users[7], image="/establishments/e4.jpeg")
         self.est = [est1, est2, est3, est4]
 
         
