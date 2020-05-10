@@ -15,7 +15,7 @@
                 <div class="card-body">
                   <h4 class="card-title">Register a band:</h4>
                   <p class="card-text" style="text-align: justify">If you have a band do not hesitate to register it on Vibely ! This way establishments that organize music events will be able to see your profile and contact you.</p>
-                  <a href="#" class="btn btn-dark"><i class="fas fa-plus"></i> Add Band</a>
+                  <a href="{% url 'band_create' %}" class="btn btn-dark"><i class="fas fa-plus"></i> Add Band</a>
                 </div>
               </div>
               <div class="col-xs-1">&nbsp;</div>
@@ -24,7 +24,7 @@
                 <div class="card-body">
                   <h4 class="card-title">Register an establishment:</h4>
                   <p class="card-text" style="text-align: justify">If you have an establishment and would like to organize an event with live music, register it on Vibely ! This way you can create events and music groups can contact you to play live music.</p>
-                  <a href="#" class="btn btn-dark"><i class="fas fa-plus"></i> Add Establishment</a>
+                  <a href="{% url 'establishment_create' %}" class="btn btn-dark"><i class="fas fa-plus"></i> Add Establishment</a>
                 </div>
               </div>
               <div class="col-xs-1">&nbsp;</div>
@@ -33,7 +33,7 @@
                 <div class="card-body">
                   <h4 class="card-title">Register an event:</h4>
                   <p class="card-text" style="text-align: justify">Register your event on Vibely so users can see it ! This way bands will contact you to play live in your event.</p>
-                  <a href="#" class="btn btn-dark"><i class="fas fa-plus"></i> Add Event</a>
+                  <a href="{% url 'event_create' %}" class="btn btn-dark"><i class="fas fa-plus"></i> Add Event</a>
                 </div>
               </div>
         </div>
