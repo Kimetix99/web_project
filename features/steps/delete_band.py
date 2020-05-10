@@ -40,5 +40,5 @@ def step_impl(context):
 
 @then(u'Title is "{title}"')
 def step_impl(context, title):
-    assert context.browser.find_by_tag('title').first == title, f'{context.browser.find_by_tag("title").first} == {title}'
+    assert context.browser.find_by_tag('title').first.text == title, f'{context.browser.find_by_tag("title").first.value} == {title}'
 
